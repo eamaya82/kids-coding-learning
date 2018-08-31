@@ -20,6 +20,15 @@
   border-radius: 20px;
 }
 
+.sea {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  background-color: DeepSkyBlue;
+}
+
 .droppable {
   position: absolute;
   width: 150px;

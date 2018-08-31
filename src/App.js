@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp,faArrowDown,faArrowLeft,faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUp,faArrowDown,faArrowLeft,faArrowRight,faFish } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 
 const cards = [{name:"UP",
@@ -33,9 +33,6 @@ const cards = [{name:"UP",
            ];
 
 class App extends Component {
- constructor(args) {
-    super(args);
-  }
   state = {
     tasks: [{name:"UP",
              icon: faArrowUp,
@@ -43,7 +40,13 @@ class App extends Component {
              bgcolor:"LightYellow",
              iconcolor:"yellow",
              onlyon: "commandup"}
-            ]
+            ],
+    fish: { x: 60,
+            y: 50,
+            rotation: 0,
+            flip: ""
+           },
+    
   }
 
  
@@ -59,17 +62,43 @@ class App extends Component {
  onDrop = (ev, cat) => {
    let id = ev.dataTransfer.getData("text");
    
-   var drawnewcard = false;
+   let drawnewcard = false;
    let tasks = this.state.tasks.filter((task) => {
-     if(task.name == id && task.onlyon == cat ){
+     if(task.name === id && task.onlyon === cat ){
        task.category = cat;
        drawnewcard = true;
      }
      return task;
    });
-   var randomCard =  Object.assign({},cards[Math.floor(Math.random()*cards.length)]);
+   let randomCard =  Object.assign({},cards[Math.floor(Math.random()*cards.length)]);
    if(drawnewcard){
     tasks.push(randomCard);
+          
+     let fish = this.state.fish;
+      switch(cat) {
+        case "commandup":
+          fish.x = fish.x - 10
+          fish.rotation = 270
+          break;
+        case "commanddown":
+          fish.x = fish.x + 10
+          fish.rotation = 90
+          break;
+        case "commandleft":
+          fish.y = fish.y - 10
+          fish.rotation = 180
+          break;
+        case "commandright":
+          fish.y = fish.y + 10
+          fish.rotation = 0
+          break;
+      }
+     if (fish.x < 0 )  fish.x = 0
+     if (fish.y < 0 )  fish.y = 0
+     if (fish.x > 70 )  fish.x = 70
+     if (fish.x > 90 )  fish.x = 90
+     
+     
    }
    
    
@@ -81,7 +110,7 @@ class App extends Component {
  }
  
   render() {
-    var tasks = {
+    let tasks = {
       draw: [],
       commandup: [],
       commanddown: [],
@@ -103,7 +132,16 @@ class App extends Component {
     });
     
     return (
-      <div className="container-drag">        
+      <div className="container-drag">
+        <div className="sea">
+        </div>
+        <div style={{
+                    position: "absolute",
+                    top: this.state.fish.x + "%",
+                    left: this.state.fish.y + "%",
+                    color: "OrangeRed"}} >
+          <FontAwesomeIcon icon={faFish} size="6x" flip={this.state.fish.flip} rotation={this.state.fish.rotation}/>
+        </div>
         <div
           className="draw"
           

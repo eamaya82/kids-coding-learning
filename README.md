@@ -1,6 +1,6 @@
-An attempt to approach programming for children (babies) through games
-if he can do a drag and drop, he could program without knowing ...
-you just have to guide him through something that entertains him and what better than a game.
+An attempt to approach programming for children (babies) through games  
+if he can do a drag and drop, he could program without knowing ...  
+you just have to guide him through something that entertains him and what better than a game.  
 
 read this....  
 https://medium.freecodecamp.org/reactjs-implement-drag-and-drop-feature-without-using-external-libraries-ad8994429f1a
