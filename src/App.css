@@ -8,28 +8,16 @@
   text-align: center;
 }
 
-.wip {
-  position: absolute;
-  width: 150px;
-  height: 100vh;
-  left: 0;
-  top: 10;
+.draw {
+  height: 110px;
+  width: 110px;
   background-color: #EEEEEE;
-  border-right: 1px dotted;
-}
-
-.header {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  background-color: #E0E0E0;
-  width:100%;
-}
-
-.task-header {
-  display: inline-block;
-  background-color: skyblue;
-  width:100%;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  margin-top: -60px;
+  margin-left: -60px;
+  border-radius: 20px;
 }
 
 .droppable {
@@ -45,7 +33,27 @@
 .draggable {
   width: 100px;
   height: 100px;
-  background-color: yellow;
+  background-color: white;
   margin: 5px auto;
   line-height: 5em;
+  border-radius: 15px;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  margin: 5px auto;
+  line-height: 5em;
+  border-radius: 20px;
+}
+
+
+.drophere {
+  /*overflow: hidden;*/
+  display: flex;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

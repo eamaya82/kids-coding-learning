@@ -3,36 +3,52 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp,faArrowDown,faArrowLeft,faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 
-class App extends Component {
-  state = {
-    tasks: [{name:"UP",
+const cards = [{name:"UP",
              icon: faArrowUp,
-             category:"wip",
-             bgcolor:"yellow",
-             iconcolor:"olive"},
+             category:"draw",
+             bgcolor:"LightYellow",
+             iconcolor:"yellow",
+             onlyon: "commandup"},
             
             {name:"DOWN",
              icon: faArrowDown,
-             category:"wip",
-             bgcolor:"blue",
-             iconcolor:"navy"},
+             category:"draw",
+             bgcolor:"LightCyan",
+             iconcolor:"blue",
+             onlyon: "commanddown"},
             
             {name:"LEFT",
              icon: faArrowLeft,
-             category:"wip",
-             bgcolor:"red",
-             iconcolor:"maroon"},
+             category:"draw",
+             bgcolor:"LightSalmon",
+             iconcolor:"red",
+             onlyon: "commandleft"},
             
             {name:"RIGHT",
              icon: faArrowRight,
-             category:"wip",
-             bgcolor:"lime",
-             iconcolor:"green"}
-           ]
+             category:"draw",
+             bgcolor:"PaleGreen",
+             iconcolor:"lime",
+             onlyon: "commandright"}
+           ];
+
+class App extends Component {
+ constructor(args) {
+    super(args);
   }
+  state = {
+    tasks: [{name:"UP",
+             icon: faArrowUp,
+             category:"draw",
+             bgcolor:"LightYellow",
+             iconcolor:"yellow",
+             onlyon: "commandup"}
+            ]
+  }
+
+ 
  
  onDragStart = (ev, id) => {
-   console.log('dragstart:',id);
    ev.dataTransfer.setData("text/plain",id);
  }
  
@@ -43,12 +59,20 @@ class App extends Component {
  onDrop = (ev, cat) => {
    let id = ev.dataTransfer.getData("text");
    
+   var drawnewcard = false;
    let tasks = this.state.tasks.filter((task) => {
-     if(task.name == id){
+     if(task.name == id && task.onlyon == cat ){
        task.category = cat;
+       drawnewcard = true;
      }
      return task;
    });
+   var randomCard =  Object.assign({},cards[Math.floor(Math.random()*cards.length)]);
+   if(drawnewcard){
+    tasks.push(randomCard);
+   }
+   
+   
    
    this.setState({
      ...this.state,
@@ -58,8 +82,11 @@ class App extends Component {
  
   render() {
     var tasks = {
-      wip: [],
-      complete: []
+      draw: [],
+      commandup: [],
+      commanddown: [],
+      commandleft: [],
+      commandright: [],
     }
     this.state.tasks.forEach ((t) => {
       tasks[t.category].push(
@@ -76,24 +103,51 @@ class App extends Component {
     });
     
     return (
-      <div className="container-drag">
-        <h2 className="header">DRAG & DROP DEMO</h2>
+      <div className="container-drag">        
         <div
-          className="wip"
+          className="draw"
+          
           onDragOver={(e)=>this.onDragOver(e)}
-          onDrop={(e)=>{this.onDrop(e, "wip")}}
+          onDrop={(e)=>{this.onDrop(e, "draw")}}
         >
-          <span className="task-header">WIP</span>
-          {tasks.wip}
+          {tasks.draw}
         </div>
-        <div
-          className="droppable"
-          onDragOver={(e)=>this.onDragOver(e)}
-          onDrop={(e)=>{this.onDrop(e, "complete")}}
-        >
-          <span className="task-header">COMPLETED</span>
-          {tasks.complete}
+
+        <div className="drophere">
+          <div
+            className="card"
+            style={{backgroundColor: "yellow"}}
+            onDragOver={(e)=>this.onDragOver(e)}
+            onDrop={(e)=>{this.onDrop(e, "commandup")}}
+          >
+            <FontAwesomeIcon icon={faArrowUp} size="6x" style={{color: "olive"}} />
+          </div>
+          <div
+            className="card"
+            style={{backgroundColor: "blue"}}
+            onDragOver={(e)=>this.onDragOver(e)}
+            onDrop={(e)=>{this.onDrop(e, "commanddown")}}
+          >
+            <FontAwesomeIcon icon={faArrowDown} size="6x" style={{color: "navy"}} />
+          </div>
+          <div
+            className="card"
+            style={{backgroundColor: "red"}}
+            onDragOver={(e)=>this.onDragOver(e)}
+            onDrop={(e)=>{this.onDrop(e, "commandleft")}}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} size="6x" style={{color: "maroon"}} />
+          </div>
+          <div
+            className="card"
+            style={{backgroundColor: "lime"}}
+            onDragOver={(e)=>this.onDragOver(e)}
+            onDrop={(e)=>{this.onDrop(e, "commandright")}}
+          >
+            <FontAwesomeIcon icon={faArrowRight} size="6x" style={{color: "green"}} />
+          </div>
         </div>
+
       </div>
     );
   }
