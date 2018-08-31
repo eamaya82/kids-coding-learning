@@ -2,8 +2,19 @@ An attempt to approach programming for children (babies) through games
 if he can do a drag and drop, he could program without knowing ...  
 you just have to guide him through something that entertains him and what better than a game.  
 
-read this....  
+## TODO:
+
+- objetives (target objetive and "draw" cards acording to the direction)
+- animation (on move, bubbles, etc)
+- split in components (all logic is in app.js)
+- "drag-and-drop" for touch (only work with mouse) https://github.com/leonaves/react-touch
+- react native
+
+
+
+start read this....  
 https://medium.freecodecamp.org/reactjs-implement-drag-and-drop-feature-without-using-external-libraries-ad8994429f1a
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

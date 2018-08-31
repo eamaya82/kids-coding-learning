@@ -9,15 +9,19 @@
 }
 
 .draw {
-  height: 110px;
-  width: 110px;
-  background-color: #EEEEEE;
   position: fixed;
   top: 40%;
   left: 50%;
   margin-top: -60px;
   margin-left: -60px;
   border-radius: 20px;
+}
+.draggable {
+  width: 100px;
+  height: 100px;
+  margin: 5px auto;
+  line-height: 5em;
+  border-radius: 15px;
 }
 
 .sea {
@@ -39,15 +43,13 @@
   border-left: 1px dotted;
 }
 
-.draggable {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  margin: 5px auto;
-  line-height: 5em;
-  border-radius: 15px;
+.drophere {
+  display: flex;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
-
 .card {
   width: 100px;
   height: 100px;
@@ -57,12 +59,55 @@
   border-radius: 20px;
 }
 
+.card-up {
+  width: 100px;
+  height: 100px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  background-color: rgb(255, 253, 186);
+  color: rgb(255, 255, 0);
+  border: 5px solid rgb(128, 128, 0);
+}
+.card-down {
+  width: 100px;
+  height: 100px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  background-color: rgb(186, 186, 255);
+  color: rgb(0, 0, 255);
+  border: 5px solid rgb(0, 0, 128);
+}
+.card-left {
+  width: 100px;
+  height: 100px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  background-color: rgb(255, 186, 186);
+  color: rgb(255, 0, 0);
+  border: 5px solid rgb(128, 0, 0);
+}
+.card-right {
+  width: 100px;
+  height: 100px;
+  padding: 10px 10px;
+  border-radius: 20px;
+  background-color: rgb(186, 255, 186);
+  color: rgb(0, 255, 0);
+  border: 5px solid rgb(0, 128, 0);
+}
+.fish {
+  color: rgb(252, 149, 15);
+  position: absolute;
+  animation: swing 0.5s;
+  animation-iteration-count: infinite;
+}
 
-.drophere {
-  /*overflow: hidden;*/
-  display: flex;
-  background-color: #333;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(0deg); }
+  60% { transform: rotate(-15deg); }
+  80% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
 }
