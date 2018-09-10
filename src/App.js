@@ -1,231 +1,76 @@
 import React, { Component } from 'react';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp,faArrowDown,faArrowLeft,faArrowRight,faFish } from '@fortawesome/free-solid-svg-icons'
+
+import Game from './components/game';
+
 import './App.css';
 
-const cardlist = [{name:"card-up",
-             icon: faArrowUp,
-             category:"draw",
-             onlyon: "commandup"},
-            
-            {name:"card-down",
-             icon: faArrowDown,
-             category:"draw",
-             onlyon: "commanddown"},
-            
-            {name:"card-left",
-             icon: faArrowLeft,
-             category:"draw",
-             onlyon: "commandleft"},
-            
-            {name:"card-right",
-             icon: faArrowRight,
-             category:"draw",
-             onlyon: "commandright"}
-           ];
+
+let iconlist_shapes = ['square','circle','play','certificate','star','heart'];
+let iconlist_veichles = ['ambulance','car-side','helicopter','motorcycle','plane','rocket','ship','shuttle-van','space-shuttle','subway','sun','traffic-light','truck','truck-monster','truck-moving','truck-pickup','user-astronaut','user','user-graduate','user-md','user-ninja','user-secret','user-tie','fighter-jet'];
+let iconlist_objects = ['anchor','bath','bell','binoculars','birthday-cake','bone','book','briefcase','camera-retro','chess','coffee','couch','dice','drum','fire-extinguisher','gamepad','globe-americas','graduation-cap','home','key','life-ring','lightbulb','microscope','mobile-alt','money-bill-alt','music','paint-brush','puzzle-piece','snowflake','tshirt','umbrella','utensil-spoon','utensils','wrench','eye','hand-paper','cut','phone'];
+let iconlist_live = ['apple-alt','bug','crow','dove','feather-alt','fish','frog','kiwi-bird','leaf','lemon','pastafarianism','paw','piggy-bank','seedling','spa','tree'];
+let iconlist_sportss = [ 'baseball-ball','basketball-ball','bowling-ball','football-ball','futbol','golf-ball','table-tennis','volleyball-ball','dumbbell','hockey-puck','swimmer','walking','bicycle'];
+
 
 class App extends Component {
-  state = {
-    cards: [{name:"card-up",
-             icon: faArrowUp,
-             category:"draw",
-             onlyon: "commandup"},
-            ],
-    fish: { x: 60,
-            y: 50,
-            dx: 0,
-            dy: 0,
-            rotation: 0,
-            flip: ""
-           },
-    
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      showgame: false,
+      iconlist: '',
+     };      
   }
- move = (x,y) => {
-   let fish = this.state.fish;
-   if (x==-1 && y==0){
-     fish.rotation = 270
-     if (fish.x <= 0 )  x = 0
-   } 
-   if (x==1 && y==0){
-     fish.rotation = 90
-     if (fish.x >= 70 )  x = 0
-   }
-   if (x==0 && y==-1){
-     fish.rotation = 180
-     if (fish.y <= 0 )  y = 0
-   } 
-   if (x==0 && y==1){
-     fish.rotation = 0
-     if (fish.y >= 90 )  y = 0
-   } 
-   
-    this.setState(prevState => ({
-      fish :{
-          x: prevState.fish.x + x,
-          y: prevState.fish.y + y,
-          rotation: fish.rotation
-      }
-    }));
-}
- componentWillUnmount() {
-  clearInterval(this.interval);
- }
- 
- 
- onDragStart = (ev, id) => {
-   ev.dataTransfer.setData("text/plain",id);
- }
- 
- onDragOver = (ev) => {
-   ev.preventDefault();
- }
- 
- onDrop = (ev, cat) => {
-   let id = ev.dataTransfer.getData("text");
-   
-   let drawnewcard = false;
-   let cards = this.state.cards.filter((card) => {
-     if(card.name === id && card.onlyon === cat ){
-       card.category = cat;
-       drawnewcard = true;
-     }
-     return card;
-   });
-   let randomCard =  Object.assign({},cardlist[Math.floor(Math.random()*cardlist.length)]);
-   if(drawnewcard){
-    cards.push(randomCard);
-          
-     let fish = this.state.fish;
-     clearInterval(this.interval); //clear previus interval
-      switch(cat) {
-        case "commandup":
-          this.interval = setInterval(() => this.move(-1,0), 100);
-          //fish.x = fish.x - 10
-          //fish.rotation = 270
-          break;
-        case "commanddown":
-          this.interval = setInterval(() => this.move(1,0), 100);
-          //fish.dx = fish.dx + 10
-          //fish.rotation = 90
-          break;
-        case "commandleft":
-          this.interval = setInterval(() => this.move(0,-1), 100);
-          //fish.dy = fish.dy - 10
-          //fish.rotation = 180
-          break;
-        case "commandright":
-          this.interval = setInterval(() => this.move(0,1), 100);
-          //fish.dy = fish.dy + 10
-          //fish.rotation = 0
-          break;
-      }
-     if (fish.x < 0 )  fish.x = 0
-     if (fish.y < 0 )  fish.y = 0
-     if (fish.x > 70 )  fish.x = 70
-     if (fish.x > 90 )  fish.x = 90
-     
-     
-   }
-   
-   
-   
-   this.setState({
-     ...this.state,
-     cards
-   });
- }
- 
-  render() {
-    let cards = {
-      draw: [],
-      commandup: [],
-      commanddown: [],
-      commandleft: [],
-      commandright: [],
-    }
-    
-    
-    
-     
-    
-    this.state.cards.forEach ((t) => {
-      cards[t.category].push(
-        <div
-          key={t.name}
-          onDragStart = {(e)=>this.onDragStart(e, t.name)}
-          draggable
-          className={t.name,"draggable"}
-          style={{backgroundColor: t.bgcolor}}
+
+  loadgamemodes = () => {
+    let modes = [
+        {name: "Shapes", icon: 'shapes', list: iconlist_shapes },
+        {name: "Vehicles", icon: 'car-side', list: iconlist_veichles},
+        {name: "Objects", icon: 'utensils',list: iconlist_objects},
+        {name: "Live", icon: 'frog', list: iconlist_live},
+        {name: "Sports", icon: 'futbol', list: iconlist_sportss},
+      ];
+    let gamemodes = [];
+    modes.forEach ((mode) => {
+      gamemodes.push(
+        <div key={mode.name}
+          className="card"
+          onMouseDown = {(e)=>this.startgame(mode.list)}
+          onTouchStart = {(e)=>this.startgame(mode.list)}
         >
-          <FontAwesomeIcon
-              icon={t.icon}
-              size="6x"
-              className={t.name} />
+          <FontAwesomeIcon icon={mode.icon} size="3x" />
+          {mode.name}
         </div>
       );
     });
+    if (!this.state.showgame) {
+      return (<div className="drophere">{gamemodes}</div>);
+    } else {
+      return "";
+    }
+  }
+ 
+  startgame = (list) => {
+     this.setState({
+        showgame: true,
+        iconlist: list,
+     });
+ }
+  
+
+  render() {
+    let chosegame = this.loadgamemodes();
     
     return (
-      <div className="container-drag">
-        <div className="sea">
-        </div>
-        <div className="fish" style={{
-                    top: this.state.fish.x + "%",
-                    left: this.state.fish.y + "%",
-                    }} >
-          <FontAwesomeIcon 
-              icon={faFish}
-              size="6x"
-              flip={this.state.fish.flip}
-              rotation={this.state.fish.rotation}
-          />
-        </div>
-        <div
-          className="draw"
-          onDragOver={(e)=>this.onDragOver(e)}
-          onDrop={(e)=>{this.onDrop(e, "draw")}}
-        >
-          {cards.draw}
-        </div>
-
-        <div className="drophere">
-          <div
-            className="card"
-            style={{backgroundColor: "yellow"}}
-            onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>{this.onDrop(e, "commandup")}}
-          >
-            <FontAwesomeIcon icon={faArrowUp} size="6x" style={{color: "olive"}} />
-          </div>
-          <div
-            className="card"
-            style={{backgroundColor: "blue"}}
-            onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>{this.onDrop(e, "commanddown")}}
-          >
-            <FontAwesomeIcon icon={faArrowDown} size="6x" style={{color: "navy"}} />
-          </div>
-          <div
-            className="card"
-            style={{backgroundColor: "red"}}
-            onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>{this.onDrop(e, "commandleft")}}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} size="6x" style={{color: "maroon"}} />
-          </div>
-          <div
-            className="card"
-            style={{backgroundColor: "lime"}}
-            onDragOver={(e)=>this.onDragOver(e)}
-            onDrop={(e)=>{this.onDrop(e, "commandright")}}
-          >
-            <FontAwesomeIcon icon={faArrowRight} size="6x" style={{color: "green"}} />
-          </div>
-        </div>
-
+      <div>
+        {chosegame}
+        { (this.state.showgame) && <Game list={this.state.iconlist} /> }
       </div>
     );
   }
 }
+
 
 export default App;

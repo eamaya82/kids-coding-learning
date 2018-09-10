@@ -5,26 +5,27 @@
 }
 
 .container-drag {
+  z-index: 1;
   text-align: center;
 }
 
 .draw {
+  z-index: 2;
   position: fixed;
-  top: 40%;
+  height: 60px;
+  width: 60px;
+  visibility: visible;
+  /*overflow: auto;*/
+  /*bottom: 0px;*/
+  top: 70%;
   left: 50%;
-  margin-top: -60px;
-  margin-left: -60px;
+  /*margin-top: -30px;
+  margin-left: -60px;*/
   border-radius: 20px;
-}
-.draggable {
-  width: 100px;
-  height: 100px;
-  margin: 5px auto;
-  line-height: 5em;
-  border-radius: 15px;
 }
 
 .sea {
+  z-index: 0;
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -33,81 +34,82 @@
   background-color: DeepSkyBlue;
 }
 
-.droppable {
-  position: absolute;
-  width: 150px;
-  height: 100vh;
-  right: 0;
-  top: 10;
-  background-color: #9E9E9E;
-  border-left: 1px dotted;
-}
-
 .drophere {
   display: flex;
-  background-color: #333;
   position: fixed;
-  bottom: 0;
+  top: 5%;
+  /*bottom: 0;*/
   width: 100%;
 }
+
 .card {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  margin: 5px auto;
-  line-height: 5em;
-  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  /*background-color: white;*/
+  margin: auto auto;
+  /*padding: 5px 5px;*/
+  /*line-height: 5em;*/
+  border-radius: 15px;
 }
 
-.card-up {
-  width: 100px;
-  height: 100px;
-  padding: 10px 10px;
-  border-radius: 20px;
-  background-color: rgb(255, 253, 186);
-  color: rgb(255, 255, 0);
-  border: 5px solid rgb(128, 128, 0);
+.card-color {
+  width: 60px;
+  height: 60px;
+  padding: 5px 5px;
+  border-radius: 15px;
 }
-.card-down {
-  width: 100px;
-  height: 100px;
-  padding: 10px 10px;
-  border-radius: 20px;
-  background-color: rgb(186, 186, 255);
-  color: rgb(0, 0, 255);
-  border: 5px solid rgb(0, 0, 128);
+
+.score {
+  position: fixed;
+  width: 95%;
+  text-align: right;
+  left: 10px;
+  bottom: 0;
+  font: 5em "Comic Sans MS", cursive, sans-serif;
+  color: white;
+  text-shadow: -1px 0 #004d66, 0 1px #004d66, 1px 0 #004d66, 0 -1px #004d66;
 }
-.card-left {
-  width: 100px;
-  height: 100px;
-  padding: 10px 10px;
-  border-radius: 20px;
-  background-color: rgb(255, 186, 186);
-  color: rgb(255, 0, 0);
-  border: 5px solid rgb(128, 0, 0);
-}
-.card-right {
-  width: 100px;
-  height: 100px;
-  padding: 10px 10px;
-  border-radius: 20px;
-  background-color: rgb(186, 255, 186);
-  color: rgb(0, 255, 0);
-  border: 5px solid rgb(0, 128, 0);
-}
+
 .fish {
   color: rgb(252, 149, 15);
   position: absolute;
-  animation: swing 0.5s;
+  animation: swing 5s;
   animation-iteration-count: infinite;
 }
 
+.animatenewcard {
+  animation: newcard linear 1.5s;
+  animation-iteration-count: 1;
+}
 
 @keyframes swing {
-  0% { transform: rotate(0deg); }
-  20% { transform: rotate(15deg); }
-  40% { transform: rotate(0deg); }
-  60% { transform: rotate(-15deg); }
-  80% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+  0%  {transform: translate(0px,0px) rotate(0deg);}
+  5%  {transform: translate(1px,-1px) rotate(-2deg);}
+  10% {transform: translate(1px,-2px) rotate(-4deg);}
+  15% {transform: translate(2px,-3px) rotate(-6deg);}
+  20% {transform: translate(2px,-4px) rotate(-8deg);}
+  25% {transform: translate(3px,-5px) rotate(-10deg);}
+  30% {transform: translate(2px,-6px) rotate(-8deg);}
+  35% {transform: translate(2px,-7px) rotate(-6deg);}
+  40% {transform: translate(1px,-8px) rotate(-4deg);}
+  45% {transform: translate(1px,-9px) rotate(-2deg);}
+  50% {transform: translate(0px,-10px) rotate(0deg);}
+  54% {transform: translate(0px,-9px) rotate(2deg);}
+  60% {transform: translate(-1px,-8px) rotate(4deg);}
+  65% {transform: translate(-2px,-7px) rotate(6deg);}
+  70% {transform: translate(-2px,-6px) rotate(8deg);}
+  75% {transform: translate(-3px,-5px) rotate(10deg);}
+  80% {transform: translate(-2px,-4px) rotate(8deg);}
+  85% {transform: translate(-2px,-3px) rotate(6deg);}
+  90% {transform: translate(-1px,-2px) rotate(4deg);}
+  96% {transform: translate(-1px,-1px) rotate(2deg);}
+  100% {transform: translate(0px,0px) rotate(0deg);}
+}
+
+@keyframes newcard {
+  0% {transform: scaleX(0.00);}
+  24% {transform: scaleX(0.24);}
+  50% {transform: scaleX(0.50);}
+  75% {transform: scaleX(0.75);}
+  100% {transform: scaleX(1.00);}
 }
