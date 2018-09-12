@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:800');
 .App {
   text-align: center;
   width: 95%;
@@ -7,6 +8,7 @@
 .container-drag {
   z-index: 1;
   text-align: center;
+  touch-action: none;
 }
 
 .draw {
@@ -32,6 +34,7 @@
   right: 0;
   top: 0;
   background-color: DeepSkyBlue;
+  touch-action: none;
 }
 
 .drophere {
@@ -40,6 +43,7 @@
   top: 5%;
   /*bottom: 0;*/
   width: 100%;
+  touch-action: none;
 }
 
 .card {
@@ -51,7 +55,27 @@
   /*line-height: 5em;*/
   border-radius: 15px;
 }
-
+.cardmenu {
+  position: fixed;
+  width: 60px;
+  height: 70px;
+  padding: 5px 5px;
+  font-size: 1em;
+  text-align: center;
+}
+.backmenu{
+  z-index: 3;
+  top: 85vh;
+  left: 10px;
+  width: 32px;
+  text-align: center;
+  position: relative;
+  padding: 2px 2px;
+  border-radius: 25px;
+  background-color: #bfff00;
+  color: #ff00bf;
+  border: 3px solid #ff00bf;
+}
 .card-color {
   width: 60px;
   height: 60px;
@@ -65,9 +89,27 @@
   text-align: right;
   left: 10px;
   bottom: 0;
-  font: 5em "Comic Sans MS", cursive, sans-serif;
-  color: white;
-  text-shadow: -1px 0 #004d66, 0 1px #004d66, 1px 0 #004d66, 0 -1px #004d66;
+  font: 8em 'Dosis', sans-serif;
+  touch-action: none;
+
+  background-color: #ff00bf;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(191,255,0,0.9);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+  
+   -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+           text-rendering: optimizeLegibility !important;
+  
+  /* Unselectable score text */
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .fish {
@@ -75,6 +117,7 @@
   position: absolute;
   animation: swing 5s;
   animation-iteration-count: infinite;
+  touch-action: none;
 }
 
 .animatenewcard {
