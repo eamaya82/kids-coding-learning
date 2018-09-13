@@ -12,9 +12,24 @@ If you need help using this app, we encourage you to:
 ## Project maintainers
 
 This project is maintained by @eamaya82. Use of this project under the [MIT License](LICENSE).
+
+
+## Roadmap:
+any idea or improvement is well received
+
+- [ ] Game modes: Pair, drag and drop to match up
+- [ ] Game modes: Seeks, look for the equal card
+- [ ] Game modes: Press, move the thing towards the objective
+- [ ] Game modes: Programin, choose the order of the commands to reach the objective
+- [ ] switch animals (fish, frog, snake, etc)
+- [ ] levels
+- [ ] Config / setings
+- [ ] Text (englis and spanish)
+- [ ] Sounds
+- [ ] React Native
  
-## To-do list / Roadmap:
-pending developments, any idea or improvement is well received  
+## To-do list
+pending developments
 
 - [ ] different game modes
   - [x] Game core
@@ -26,23 +41,25 @@ pending developments, any idea or improvement is well received
   - [x] pair mode: mach the 2 images
     - [x] different groups of images / icons
     - [ ] more and/or bether images on groups
-  - [ ] cards for move the fish: to guide the fish to the target, instead of making a pair, by pressing a card the fish moves in that direction
+  - [ ] Seeks, look for the 2 images on the cards 18 (3 x 6)
+  - [ ] touch or press cards for move the fish: to guide the fish to the target, instead of making a pair, by pressing a card the fish moves in that direction
   - [ ] programming: choose the cards in an order, then the fish will perform actions in that order, the idea is that they have obstacles and objectives.
-- [ ] animation (on move, bubbles, etc)  
+- [ ] improvements (animation, details, sounds, texts etc)  
   - [x] animation on new Card  
   - [x] animation on fish
   - [ ] bubbles https://codepen.io/matchboxhero/pen/LzdgOv?editors=1100
   - [ ] seaweed and other things in the fish tank
   - [ ] improve 3d effect https://codepen.io/ameyraut/pen/mzktE?editors=1100
+  - [ ] sounds and text
 - [x] split in components (all logic is in app.js)
 	- [x] Card component
 	- [x] Game logic
 	- [x] Font awesome icon load
   - [ ] fish / frog / snake etc...
-    - [ ] background (for example aquarium for fish)
+    - [ ] backgrounds (for example aquarium for fish)
 - [x] "drag-and-drop" for mouse and touch
   - [x] Mouse
-    - [ ] mouse movement bug (move mouse quick off the card and release click then move mouse over the card )
+    - [ ] mouse movement bug #2 (move mouse quick off the card)
   - [x] Touch
 - [ ] configuration options
   - [ ] reset card on release
