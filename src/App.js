@@ -89,7 +89,6 @@ backmenu = () => {
      });
  }
 
-
   render() {
     let choseGame = this.loadgamemodes();
     

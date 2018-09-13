@@ -17,7 +17,7 @@ class Game extends Component {
 
 		let iconDrop0 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
 		let iconDrop1 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
-		let iconDrop2 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
+		//let iconDrop2 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
 
 		this.state = {
 			inDragMode: false,
@@ -40,15 +40,15 @@ class Game extends Component {
 					icon: iconDrop1.slice(),
 					color: 5
 				},
-				{
+				/*{
 					icon: iconDrop2.slice(),
 					color: 10
-				},
+				},*/
 			],
 			cardColor: 3,
-			maxcardDrop: 3,
+			maxcardDrop: 2,
 			cardMach: 0,
-			nextMach: 10,
+			nextMach: 5,
 			fish: {
 				x: 60,
 				y: 50,
@@ -58,8 +58,34 @@ class Game extends Component {
 	}
 
 
+  componentWillMount() {
+    //openFullscreen ***********
+    //for test on web mobile browser
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+      elem.msRequestFullscreen();
+    }
+  }
+  
 	componentWillUnmount() {
-		clearInterval(this.interval);
+    clearInterval(this.interval);
+    //closeFullscreen ***********
+    //for test on web mobile browser
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
 	}
   
   //parent function ***********
@@ -197,7 +223,7 @@ class Game extends Component {
 			newcardMach++;
 
 			if (newcardMach > newnextMach) {
-				newnextMach = newnextMach * 3;
+				newnextMach = Math.floor(newnextMach * 2.9);
 				newmaxcardDrop++;
 			}
 			if (newmaxcardDrop > 6) {

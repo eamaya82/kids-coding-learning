@@ -17,12 +17,9 @@
   height: 60px;
   width: 60px;
   visibility: visible;
-  /*overflow: auto;*/
   /*bottom: 0px;*/
   top: 70%;
-  left: 50%;
-  /*margin-top: -30px;
-  margin-left: -60px;*/
+  left: 45%;
   border-radius: 20px;
 }
 
@@ -49,7 +46,6 @@
 .card {
   width: 60px;
   height: 60px;
-  /*background-color: white;*/
   margin: auto auto;
   /*padding: 5px 5px;*/
   /*line-height: 5em;*/
