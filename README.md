@@ -11,7 +11,7 @@ If you need help using this app, we encourage you to:
 
 ## Project maintainers
 
-This project is maintained by @eamaya82. Use of this project under the [MIT License](LICENSE.md).
+This project is maintained by @eamaya82. Use of this project under the [MIT License](LICENSE).
  
 ## To-do list / Roadmap:
 pending developments, any idea or improvement is well received  
@@ -38,6 +38,8 @@ pending developments, any idea or improvement is well received
 	- [x] Card component
 	- [x] Game logic
 	- [x] Font awesome icon load
+  - [ ] fish / frog / snake etc...
+    - [ ] background (for example aquarium for fish)
 - [x] "drag-and-drop" for mouse and touch
   - [x] Mouse
     - [ ] mouse movement bug (move mouse quick off the card and release click then move mouse over the card )
