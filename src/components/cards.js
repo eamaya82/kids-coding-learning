@@ -6,8 +6,6 @@ import allicons from './importallicons'; //load all FontAwesomeIcon
 import '../App.css';
 
 class Card extends Component {
-  //css efect
-  //https://tympanus.net/codrops/2012/01/11/css-buttons-with-pseudo-elements/
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +27,13 @@ class Card extends Component {
   
   render() {
     return (
-      <div key={this.state.key} className={"card-color"}>
-        <FontAwesomeIcon size={this.state.size} className={"card-color"} icon={this.props.icon[0]} style={this.state.style} />
+      <div key={this.state.key} className={'card-color'}>
+        <FontAwesomeIcon
+            className={'card-color'}
+            style={this.state.style}
+            size={this.state.size}
+            icon={this.props.icon[0]}
+        />
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFish, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Card from './cards';
+import Fish from './fish';
 import '../App.css';
 
 library.add(faFish);
@@ -17,7 +18,6 @@ class Game extends Component {
 
 		let iconDrop0 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
 		let iconDrop1 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
-		//let iconDrop2 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
 
 		this.state = {
 			inDragMode: false,
@@ -40,25 +40,18 @@ class Game extends Component {
 					icon: iconDrop1.slice(),
 					color: 5
 				},
-				/*{
-					icon: iconDrop2.slice(),
-					color: 10
-				},*/
 			],
 			cardColor: 3,
 			maxcardDrop: 2,
 			cardMach: 0,
 			nextMach: 5,
-			fish: {
-				x: 60,
-				y: 50,
-				rotation: 0,
-			},
+      fishCommand: 0,
+      fishSequence: [],
 		};
 	}
 
 
-  componentWillMount() {
+  componentDidMount() {
     //openFullscreen ***********
     //for test on web mobile browser
     let elem = document.documentElement;
@@ -72,7 +65,6 @@ class Game extends Component {
       elem.msRequestFullscreen();
     }
   }
-  
 	componentWillUnmount() {
     clearInterval(this.interval);
     //closeFullscreen ***********
@@ -257,7 +249,7 @@ class Game extends Component {
 				nextMach: newnextMach,
 				maxcardDrop: newmaxcardDrop,
 			});
-			this.randommovefish();
+			this.commandfish();
 			this.handleCardReset();
 		}
 	}
@@ -270,77 +262,41 @@ class Game extends Component {
 	}
 
   //fish ***********
-  randommovefish() {
-		clearInterval(this.interval); //clear previus interval
-		let moveTo = Math.floor(Math.random() * 4);
-		switch (moveTo) {
-			case 0:
-				this.interval = setInterval(() => this.movefish(-1, 0), 100);
-				break;
-			case 1:
-				this.interval = setInterval(() => this.movefish(1, 0), 100);
-				break;
-			case 2:
-				this.interval = setInterval(() => this.movefish(0, -1), 100);
-				break;
-			case 3:
-				this.interval = setInterval(() => this.movefish(0, 1), 100);
-				break;
-			default:
-		}
+  commandfish() {
+		let moveTo = (Math.floor(Math.random() * 4) + 1) * 2;
+    let updateSequence = this.state.fishSequence;
+    let nextCommand = this.state.fishCommand;
+    updateSequence.push(moveTo);
+    if(updateSequence.length === 1 && nextCommand === 0) {
+        nextCommand = moveTo;
+        updateSequence = [];
+    }
+		this.setState({
+        fishSequence: updateSequence,
+        fishCommand: nextCommand,
+     });
 	}
-	movefish(x, y) {
-		let fish = this.state.fish;
-		if (x === -1 && y === 0) {
-			fish.rotation = 270;
-		}
-		if (x === 1 && y === 0) {
-			fish.rotation = 90;
-		}
-		if (x === 0 && y === -1) {
-			fish.rotation = 180;
-		}
-		if (x === 0 && y === 1) {
-			fish.rotation = 0;
-		}
-		x = x / 4;
-		y = y / 4;
-		if (fish.x <= 5) {
-			x = 0;
-			fish.x = 6;
-			clearInterval(this.interval);
-		}
-		if (fish.x >= 87) {
-			x = 0;
-			fish.x = 86;
-			clearInterval(this.interval);
-		}
-		if (fish.y <= 5) {
-			y = 0;
-			fish.y = 6;
-			clearInterval(this.interval);
-		}
-		if (fish.y >= 90) {
-			y = 0;
-			fish.y = 89;
-			clearInterval(this.interval);
-		}
-
-		this.setState(prevState => ({
-			fish: {
-				x: prevState.fish.x + x,
-				y: prevState.fish.y + y,
-				rotation: fish.rotation
-			}
-		}));
-	}
+  commanddone = () => {
+    // update command on fish
+    // get next command fron array and put in the execute query?
+    let updateSequence = this.state.fishSequence;
+    let nextCommand = 0;
+    if (updateSequence.length > 0) {
+      nextCommand = updateSequence.splice(0, 1);
+      nextCommand = nextCommand[0];
+    }
+     this.setState({
+        fishSequence: updateSequence,
+        fishCommand: nextCommand,
+     });
+ }
 
 	render() {
 		let dropcards = [];
 		this.state.cardDrop.forEach((drop) => {
 			dropcards.push(
 				<div key={drop.icon[0] + drop.color} id={drop.icon[0] + drop.color} className='card'>
-					<Card icon={drop.icon} color={drop.color} size='3' />
+					<Card icon={drop.icon} color={drop.color} size={3} />
 				</div>
 			);
 		});
@@ -357,15 +313,7 @@ class Game extends Component {
 				<div className='score'>
 					{this.state.cardMach}
 				</div>
-				<div
-					className='fish'
-					style={{
-						top: this.state.fish.x + '%',
-						left: this.state.fish.y + '%',
-					}}
-				>
-					<FontAwesomeIcon icon={faFish} size='3x' rotation={this.state.fish.rotation} />
-				</div>
+        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.75} />
 				<div
 					key={this.state.cardDraw.icon[0] + this.state.cardDraw.color}
 					id={this.state.cardDraw.icon[0] + this.state.cardDraw.color}
@@ -379,7 +327,7 @@ class Game extends Component {
 					onTouchEnd={(e)=>this.onTouchEnd(e)}
 					onTouchCancel={(e)=>this.onTouchEnd(e)}
 				>
-					<Card icon={this.state.cardDraw.icon} color={this.state.cardDraw.color} size='4' />
+					<Card icon={this.state.cardDraw.icon} color={this.state.cardDraw.color} size={4} />
 				</div>
 				<div className='drophere'>
 					{dropcards}
