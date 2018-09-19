@@ -88,7 +88,7 @@ class App extends Component {
       );
     });
     if (this.state.showGame === 0) {
-      return (<div className='sea'>{gameModes}</div>);
+      return (<div className='bg'>{gameModes}</div>);
     } else {
       return '';
     }

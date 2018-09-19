@@ -215,7 +215,7 @@ class Game extends Component {
 
 		return ( 
 			<div className='container-drag'>
-				<div className='sea'></div>
+        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.75} />
         <div className='backmenu'
           onClick={() => this.goHomeScreen()}
         >
@@ -224,7 +224,6 @@ class Game extends Component {
 				<div className='score'>
 					{this.state.cardMach}
 				</div>
-        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.75} />
 				<div className='drophere'>
 					{dropcards}
 				</div>

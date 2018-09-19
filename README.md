@@ -57,10 +57,10 @@ Pending developments
 - [ ] improvements (animation, details, sounds, texts etc)  
   - [x] animation on new Card  
   - [x] animation on fish  
-  - [ ] bubbles (example [codepen][cpbubbles])  
+  - [x] bubbles [from here][bubbles4] (other demos [demo1][bubbles1] [demo2][bubbles2] [demo3][bubbles3])  
   - [ ] seaweed and other things in the fish tank  
   - [ ] change the fish for a frog, bug ,snake etc... can by part of the levels?  
-    - [ ] backgrounds (for example aquarium for fish)  
+  - [ ] backgrounds (for example aquarium for fish)  
   - [ ] improve 3d effect (example [codepen][cp3deffect])  
   - [ ] sounds and text  
 - [x] "drag-and-drop" for mouse and touch  
@@ -77,5 +77,8 @@ To Clean
 - [ ] cardOffset in Game component  
 
 
-[cpbubbles]: https://codepen.io/matchboxhero/pen/LzdgOv?editors=1100
+[bubbles1]: https://codepen.io/matchboxhero/pen/LzdgOv?editors=1100
+[bubbles2]: https://www.html5canvastutorials.com/advanced/html5-canvas-animated-bubbles/
+[bubbles3]: https://codepen.io/Mark_Bowley/pen/mEtqj
+[bubbles4]: http://jsfiddle.net/p5gpx
 [cp3deffect]: https://codepen.io/ameyraut/pen/mzktE?editors=1100

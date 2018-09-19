@@ -3,7 +3,8 @@ import React, {	Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFish } from '@fortawesome/free-solid-svg-icons';
-import '../App.css';
+//import '../App.css';
+import './fish.css';
 
 library.add(faFish);
 let intervalStop;
@@ -158,8 +159,21 @@ class Fish extends Component {
 		};
   
     return (
-      <div>
+      <div className='sea'>
       {grid}
+      <div id="bubles">
+        <div class="bubble x1"></div>
+        <div class="bubble x2"></div>
+        <div class="bubble x3"></div>
+        <div class="bubble x4"></div>
+        <div class="bubble x5"></div>
+        <div class="bubble x6"></div>
+        <div class="bubble x7"></div>
+        <div class="bubble x8"></div>
+        <div class="bubble x9"></div>
+        <div class="bubble x10"></div>      
+      </div>     
+      
       <div
 					className='fish'
 					style={{
