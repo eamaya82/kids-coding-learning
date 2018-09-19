@@ -61,8 +61,8 @@
 }
 .backmenu{
   z-index: 3;
-  top: 85vh;
-  left: 10px;
+  top: 5px;
+  left: 5px;
   width: 32px;
   text-align: center;
   position: relative;
@@ -85,7 +85,7 @@
   text-align: right;
   left: 10px;
   bottom: 0;
-  font: 8em 'Dosis', sans-serif;
+  font: 7em 'Dosis', sans-serif;
   touch-action: none;
 
   background-color: #ff00bf;

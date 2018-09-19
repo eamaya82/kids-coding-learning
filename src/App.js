@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import Game from './components/game';
+import Game1 from './components/gamemode1';
+import Game2 from './components/gamemode2';
+import Game4 from './components/gamemode4';
 
 import './App.css';
-
-
-let iconListShapes = ['square','circle','play','certificate','star','heart'];
-let iconListVeichles = ['ambulance','car-side','helicopter','motorcycle','plane','rocket','ship','shuttle-van','space-shuttle','subway','sun','traffic-light','truck','truck-monster','truck-moving','truck-pickup','user-astronaut','user','user-graduate','user-md','user-ninja','user-secret','user-tie','fighter-jet'];
-let iconListObjects = ['anchor','bath','bell','binoculars','birthday-cake','bone','book','briefcase','camera-retro','chess','coffee','couch','dice','drum','fire-extinguisher','gamepad','globe-americas','graduation-cap','home','key','life-ring','lightbulb','microscope','mobile-alt','money-bill-alt','music','paint-brush','puzzle-piece','snowflake','tshirt','umbrella','utensil-spoon','utensils','wrench','eye','hand-paper','cut','phone'];
-let iconListLive = ['apple-alt','bug','crow','dove','feather-alt','fish','frog','kiwi-bird','leaf','lemon','pastafarianism','paw','piggy-bank','seedling','spa','tree'];
-let iconListSportss = [ 'baseball-ball','basketball-ball','bowling-ball','football-ball','futbol','golf-ball','table-tennis','volleyball-ball','dumbbell','hockey-puck','swimmer','walking','bicycle'];
 
 
 class App extends Component {
@@ -24,26 +19,53 @@ class App extends Component {
      };      
   }
 
+  
+  openFullscreen(){
+    //for test on web mobile browser
+    let elem = document.documentElement;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+      elem.msRequestFullscreen();
+    }
+  }
+  
+  closeFullscreen() {
+    //for test on web mobile browser
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+  
   loadgamemodes () {
     let modes = [
-        {name: 'Shapes', icon: 'shapes', group: 0, list: iconListShapes },
-        {name: 'Vehicles', icon: 'car-side', group: 0, list: iconListVeichles},
-        {name: 'Objects', icon: 'utensils', group: 0, list: iconListObjects},
-        {name: 'Life', icon: 'frog', group: 0, list: iconListLive},
-        {name: 'Sports', icon: 'futbol', group: 0, list: iconListSportss},
+        {name: 'Pair', icon: 'clone', group: 0, data: [], mode: 1},
+        {name: 'Move', icon: 'arrows-alt', group: 4, data: [], mode: 2},
+        {name: 'Seek', icon: 'grip-horizontal', group: 8, data: [], mode: 4},
+      
 
         /* clone dummy 
-        {name: 'Shapes', icon: 'shapes', group: 4, list: iconListShapes },
-        {name: 'Vehicles', icon: 'car-side', group: 4, list: iconListVeichles},
-        {name: 'Objects', icon: 'utensils', group: 4, list: iconListObjects},
-        {name: 'Life', icon: 'frog', group: 8, list: iconListLive},
-        {name: 'Sports', icon: 'futbol', group: 8, list: iconListSportss},
+        {name: 'Shapes', icon: 'shapes', group: 4, data: [], mode: 1},
+        {name: 'Vehicles', icon: 'car-side', group: 4, data: [], mode: 1},
+        {name: 'Objects', icon: 'utensils', group: 4, data: [], mode: 1},
+        {name: 'Life', icon: 'frog', group: 8, data: [], mode: 1},
+        {name: 'Sports', icon: 'futbol', group: 8, data: [], mode: 1},
 
-        {name: 'Shapes', icon: 'shapes', group: 2, list: iconListShapes },
-        {name: 'Vehicles', icon: 'car-side', group: 2, list: iconListVeichles},
-        {name: 'Objects', icon: 'utensils', group: 6, list: iconListObjects},
-        {name: 'Life', icon: 'frog', group: 6, list: iconListLive},
-        {name: 'Sports', icon: 'futbol', group: 10, list: iconListSportss},
+        {name: 'Shapes', icon: 'shapes', group: 2, data: [], mode: 1},
+        {name: 'Vehicles', icon: 'car-side', group: 2, data: [], mode: 1},
+        {name: 'Objects', icon: 'utensils', group: 6, data: [], mode: 1},
+        {name: 'Life', icon: 'frog', group: 6, data: [], mode: 1},
+        {name: 'Sports', icon: 'futbol', group: 10, data: [], mode: 1},
         */
       ];
     let gameModes = [];
@@ -51,43 +73,43 @@ class App extends Component {
       gameModes.push(
         <div key={mode.name}
           style={{
-            top: `${ Math.floor(index / 5) * 33 +5}%`,
-            left: `${ (index % 5) * 20 + 5}%`,
+            top: `${ Math.floor(index / 4) * 33 +5}%`,
+            left: `${ (index % 4) * 20 + 15}%`,
             color: `hsl(${ mode.group * 30 }, 75%, 50%)`,
             backgroundColor: `hsl(${ mode.group * 30 }, 100%, 90%)`,
             border: `5px solid hsl(${ mode.group * 30 }, 100%, 25%)`,
           }}
           className='card cardmenu'
-          onMouseDown={(e) => this.startgame(mode.list)}
-          onTouchStart={(e) => this.startgame(mode.list)}
+            onClick={(e) => this.startgame(e, mode.mode, mode.data)}
         >
           <FontAwesomeIcon icon={mode.icon} size='3x' />
           {mode.name}
         </div>
       );
     });
-    if (!this.state.showGame) {
-      //return (<div className='drophere'>{gameModes}</div>);
+    if (this.state.showGame === 0) {
       return (<div className='sea'>{gameModes}</div>);
-      //return gameModes;
     } else {
       return '';
     }
   }
  
-  startgame(list) {
+  startgame(ev, mode, data) {
+    ev.preventDefault();
+    this.openFullscreen();
      this.setState({
-        showGame: 1,
-        iconList: list.slice(),
+        showGame: mode,
+        data: data.slice(),
      });
  }
 
 backmenu = () => {
-     this.setState({
-        showGame: 0,
-        iconList: '',
-     });
- }
+  this.closeFullscreen();
+  this.setState({
+    showGame: 0,
+    data: '',
+  });
+}
 
   render() {
     let choseGame = this.loadgamemodes();
@@ -95,7 +117,9 @@ backmenu = () => {
     return (
       <div>
         {choseGame}
-        { (this.state.showGame === 1) && <Game list={this.state.iconList} toHome={this.backmenu} /> }
+        { (this.state.showGame === 1) && <Game1 data={this.state.data} toHome={this.backmenu} /> }
+        { (this.state.showGame === 2) && <Game2 data={this.state.data} toHome={this.backmenu} /> }
+        { (this.state.showGame === 4) && <Game4 data={this.state.data} toHome={this.backmenu} /> }
       </div>
     );
   }

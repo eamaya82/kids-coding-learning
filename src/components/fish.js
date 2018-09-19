@@ -14,9 +14,15 @@ class Fish extends Component {
       speed: this.props.speed,
       newCommand: true,
       fish: {
-        x: 60,
+        x: 30,
         y: 50,
         rotation: 0,
+      },
+      gridborder: {
+        up: 10,
+        down: 70,
+        left: 10,
+        right: 80,
       },
     };
   }
@@ -65,6 +71,7 @@ class Fish extends Component {
   
 	movefish(x, y) {
   let fish = this.state.fish;
+  //console.log(fish);
   if (x === -1 && y === 0) {
     fish.rotation = 270;
   }
@@ -81,21 +88,21 @@ class Fish extends Component {
   x = x * this.state.speed;
   y = y * this.state.speed;
 
-  if (fish.x <= 5) {
+  if (fish.x < this.state.gridborder.up) {
     x = 0;
-    fish.x = 6;
+    fish.x = this.state.gridborder.up;
   }
-  if (fish.x >= 87) {
+  if (fish.x > this.state.gridborder.down) {
     x = 0;
-    fish.x = 86;
+    fish.x = this.state.gridborder.down;
   }
-  if (fish.y <= 5) {
+  if (fish.y < this.state.gridborder.left) {
     y = 0;
-    fish.y = 6;
+    fish.y = this.state.gridborder.left;
   }
-  if (fish.y >= 90) {
+  if (fish.y > this.state.gridborder.right) {
     y = 0;
-    fish.y = 89;
+    fish.y = this.state.gridborder.right;
   }
 
   if (x === 0 && y === 0) {
@@ -119,7 +126,40 @@ class Fish extends Component {
      
      
    render() {
+     let grid = [];
+     let i;
+     for (i = 0; i< 10; i++) {
+		
+			grid.push(
+				<div key={'h'+i} style={{
+            position: 'absolute',
+            top: '0%',
+            left: (i*10) +'%',
+            width: '9.7%',
+            height: '99.7%',
+            border: '1px dotted rgba(0,0,0,0.1)',
+          }}
+        >
+				</div>
+			);
+       grid.push(
+          <div key={'w'+i} style={{
+              position: 'absolute',
+              top: (i*10) +'%',
+              left: '0%',
+              width: '99.7%',
+              height: '9.7%',
+              border: '1px dotted rgba(0,0,0,0.1)',
+            }}
+          >
+          </div>
+        );
+     
+		};
+  
     return (
+      <div>
+      {grid}
       <div
 					className='fish'
 					style={{
@@ -127,8 +167,9 @@ class Fish extends Component {
 						left: this.state.fish.y + '%',
 					}}
 				>
-					<FontAwesomeIcon icon={faFish} size='3x' rotation={this.state.fish.rotation} />
+					<FontAwesomeIcon icon={faFish} size='4x' rotation={this.state.fish.rotation} />
 				</div>
+      </div>
     );
   }  
 }

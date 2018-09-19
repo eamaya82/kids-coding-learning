@@ -10,11 +10,22 @@ import '../App.css';
 library.add(faFish);
 library.add(faArrowLeft);
 
+//let iconListShapes = ['square','circle','play','certificate','star','heart'];
+//let iconListVeichles = ['ambulance','car-side','helicopter','motorcycle','plane','rocket','ship','shuttle-van','space-shuttle','subway','sun','traffic-light','truck','truck-monster','truck-moving','truck-pickup','user-astronaut','user','user-graduate','user-md','user-ninja','user-secret','user-tie','fighter-jet'];
+//let iconListObjects = ['anchor','bath','bell','binoculars','birthday-cake','bone','book','briefcase','camera-retro','chess','coffee','couch','dice','drum','fire-extinguisher','gamepad','globe-americas','graduation-cap','home','key','life-ring','lightbulb','microscope','mobile-alt','money-bill-alt','music','paint-brush','puzzle-piece','snowflake','tshirt','umbrella','utensil-spoon','utensils','wrench','eye','hand-paper','cut','phone'];
+//let iconListLive = ['apple-alt','bug','crow','dove','feather-alt','fish','frog','kiwi-bird','leaf','lemon','pastafarianism','paw','piggy-bank','seedling','spa','tree'];
+//let iconListSportss = [ 'baseball-ball','basketball-ball','bowling-ball','football-ball','futbol','golf-ball','table-tennis','volleyball-ball','dumbbell','hockey-puck','swimmer','walking','bicycle'];
+
+
+
+
+
 class Game extends Component {
 
   constructor(props) {
 		super(props);
-		let iconList = this.props.list;
+    let iconList = ['square','circle','play','certificate','star','heart','ambulance','car-side','helicopter','motorcycle','plane','rocket','ship','shuttle-van','space-shuttle','subway','sun','traffic-light','truck','truck-monster','truck-moving','truck-pickup','user-astronaut','user','user-graduate','user-md','user-ninja','user-secret','user-tie','fighter-jet','anchor','bath','bell','binoculars','birthday-cake','bone','book','briefcase','camera-retro','chess','coffee','couch','dice','drum','fire-extinguisher','gamepad','globe-americas','graduation-cap','home','key','life-ring','lightbulb','microscope','mobile-alt','money-bill-alt','music','paint-brush','puzzle-piece','snowflake','tshirt','umbrella','utensil-spoon','utensils','wrench','eye','hand-paper','cut','phone','apple-alt','bug','crow','dove','feather-alt','fish','frog','kiwi-bird','leaf','lemon','pastafarianism','paw','piggy-bank','seedling','spa','tree','baseball-ball','basketball-ball','bowling-ball','football-ball','futbol','golf-ball','table-tennis','volleyball-ball','dumbbell','hockey-puck','swimmer','walking','bicycle'];
+		//let iconList = this.props.data;
 
 		let iconDrop0 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
 		let iconDrop1 = iconList.splice(Math.floor(Math.random() * iconList.length), 1);
@@ -52,32 +63,10 @@ class Game extends Component {
 
 
   componentDidMount() {
-    //openFullscreen ***********
-    //for test on web mobile browser
-    let elem = document.documentElement;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { /* Firefox */
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE/Edge */
-      elem.msRequestFullscreen();
-    }
+    
   }
 	componentWillUnmount() {
     clearInterval(this.interval);
-    //closeFullscreen ***********
-    //for test on web mobile browser
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
 	}
   
   //parent function ***********
@@ -305,8 +294,7 @@ class Game extends Component {
 			<div className='container-drag'>
 				<div className='sea'></div>
         <div className='backmenu'
-          onMouseDown={() => this.goHomeScreen()}
-          onTouchStart={() => this.goHomeScreen()}
+          onClick={() => this.goHomeScreen()}
         >
 					<FontAwesomeIcon icon={faArrowLeft} size='2x' />
 				</div>
