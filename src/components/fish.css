@@ -43,20 +43,50 @@
   position: relative;
   margin-top: 10px;
   margin-left: 13px;
-  background-color: rgb(252, 149, 15);
-  /*background: linear-gradient(to right, rgb(252, 149, 15) 50%, rgb(255, 201, 66) 100%), url(
+  background-color: rgba(252, 149, 15,0.5);
+  
+  background-image: radial-gradient(circle at 40px 15px,
+                                      rgb(252, 149, 15) 12px,
+                                      black 13px,
+                                      white 14px,
+                                      white 19px,
+                                      black 20px,
+                                      rgba(252, 149, 15,1) 21px,
+                                      rgb(252, 149, 15) 27px,
+                                      black 28px,
+                                      white 29px,
+                                      white 32px,
+                                      black 33px,
+                                      rgba(252, 149, 15,1) 34px
+                      );
+  
+/*
+  background: linear-gradient(to right, rgb(252, 149, 15) 50%, rgb(255, 201, 66) 100%), url(
     data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAARklEQVQoU2P8M5X/PwMDAwOziTGIYvh75iyYDaKRASNIITYJdDHG/yed/qPrhpmEbAtehShWE20i0W4kydco4QANKnQPAgBnpT8BcPCqpgAAAABJRU5ErkJggg==
   ) repeat;
   background-blend-mode: color;*/
   border-radius: 50%;
   width: 50px; 
-  height: 30px;
+  height: 25px;
   box-shadow: inset 10px 5px 5px -10px rgb(252, 149, 15),
               inset 10px -5px 5px -10px rgb(252, 149, 15),
               inset 0px 10px 18px -10px rgba(255,255,255,0.75),
               inset 0px -10px 18px -10px rgba(0,0,0,0.75);
   
   animation: fisheat 4.1s ease-in-out infinite alternate;
+}
+
+.goldfish-gill {
+  position: absolute;
+  margin-left: 33px;
+  margin-top: 3px;
+  z-index: 1;
+  border-radius: 50%;
+  width: 15px;
+  height: 18px;
+  transform: rotate(-10deg);
+  /*box-shadow: -3px 0px 1px -1px rgb(180,106,11);*/
+  animation: fishbreathe 2s ease-in-out infinite alternate;
 }
 .goldfish-eye {
   position: absolute;
@@ -79,22 +109,42 @@
   width: 3px;
   animation: fisheye 20s infinite;
 }
-.goldfish-uptail {
+.goldfish-uptail1 {
   position: absolute;
-  margin-left: 21px;
-  margin-top: 17px;
+  margin-left: 27px;
+  margin-top: 15px;
   background-color: rgb(252, 149, 15);
-  /*background:url(
-  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2O8V8XwnwENMP6Zyk9tQQD+1QzZ7Yl/ugAAAABJRU5ErkJggg==
-    ) repeat;*/
   border-radius: 50%;
-  box-shadow: inset 0px 5px 5px -5px rgba(255,255,255,0.75);
-              
-  transform: rotate(40deg);
-  width: 26px;
+  box-shadow: inset 4px 2px 1px -2px rgba(0,0,0,0.75);
+  width: 23px;
   height: 16px;
-  animation: fishtail3 7.7s infinite;
+  animation: fishtail3 5.1s ease-in-out infinite alternate;
   transform-origin: right;
+}
+.goldfish-uptail2 {
+  position: absolute;
+  margin-left: 13px;
+  margin-top: 16px;
+  background-color: rgb(252, 149, 15);
+  border-radius: 50%;
+  box-shadow: inset 4px 2px 1px -2px rgba(0,0,0,0.75);
+  width: 20px;
+  height: 16px;
+  animation: fishtail3 4.4s ease-in-out infinite alternate;
+  transform-origin: right;
+}
+.goldfish-downtail {
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 25px;
+  background-color: rgb(252, 149, 15);
+  border-radius: 50%;
+  box-shadow: inset -2px -4px 1px -2px rgba(0,0,0,0.75);
+  width: 16px;
+  height: 20px;
+  animation: fishtail4 3.9s ease-in-out infinite alternate;
+  transform-origin: right;
+  
 }
 .goldfish-midtail {
   position: absolute;
@@ -102,36 +152,25 @@
   margin-top: 13px;
   background-color: rgb(252, 149, 15);
   border-radius: 50%;
-  box-shadow: inset 0px 5px 5px -5px rgba(255,255,255,0.75);
+  box-shadow: inset 5px 0px 2px -2px rgba(0,0,0,0.8);
   /*transform: rotate(0deg);*/
   width: 13px;
   height: 8px;
-  animation: fishtail2 0.6s infinite;
+  animation: fishtail2 0.3s ease-in-out infinite alternate;
   transform-origin: right;
 }
 .goldfish-fin {
   position: absolute;
-  /*background:url(
-  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2O8V8XwnwENMP6Zyk9tQQD+1QzZ7Yl/ugAAAABJRU5ErkJggg==
-    ) repeat;*/
-  margin-top: 18px; 
+  margin-top: 16px; 
   margin-left: 1px;
   background-color: rgb(252, 149, 15);
-  /*background-image: linear-gradient(to right, rgb(235, 153, 46) 0%, rgb(187, 112, 15) 45%);*/
   border-radius: 50%;
-  transform: rotate(40deg);
-  width: 26px;
+  /*transform: rotate(40deg);*/
+  width: 22px;
   height: 13px;
-  animation: fishtail1 1.8s infinite;
-}
-.goldfish-fin-bottom {
-  position: absolute;
-  margin-top: 22px; 
-  margin-left: 1px;
-  background-color: rgb(252, 149, 15);
-  /*background-image: linear-gradient(to right, rgb(235, 153, 46) 0%, rgb(187, 112, 15) 45%);*/
-  transform: rotate(-40deg);
-  animation: fishtail2 1.8s infinite;
+  box-shadow: inset 5px 0px 2px -2px rgba(0,0,0,0.8);
+  animation: fishtail1 1.5s ease-in-out infinite alternate;
+  transform-origin: right;
 }
 /* bubbles */
 .bubble {
@@ -251,7 +290,11 @@
   0%  {transform: rotate(-9deg);}
   100% {transform: rotate(9deg);}
 }
-
+@keyframes fishbreathe{
+  0% {box-shadow: -1.5px 0px 1px -1px rgba(0,0,0,0.3);}
+  80% {box-shadow: -1.5px 0px 1px -1px rgba(0,0,0,0.4);}
+  100% {box-shadow: -3.5px 0px 1px -1px rgba(0,0,0,0.4);}
+}
 @keyframes fisheat{
   80% {clip-path: polygon(0 0, 100% 0, 100% 50%, 86% 51%, 100% 50%, 100% 100%, 0 100%);}
   100% {clip-path: polygon(0 0, 100% 0, 100% 41%, 86% 51%, 100% 59%, 100% 100%, 0 100%);}
@@ -264,19 +307,21 @@
   100% {transform: translate(0px,0px);}
 }
 @keyframes fishtail1{
-  0% {transform: rotate(25deg);}
-  50% {transform: rotate(50deg);}
-  100% {transform: rotate(25deg);}
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(35deg);}
 }
 @keyframes fishtail2{
-  0% {transform: rotate(-25deg);}
-  50% {transform: rotate(-50deg);}
-  100% {transform: rotate(-25deg);}
+  0% {transform: rotate(-18eg);}
+  100% {transform: rotate(-40deg);}
 }
 @keyframes fishtail3{
-  0% {transform: rotate(35deg);}
+  0% {transform: rotate(40deg);}
   50% {transform: rotate(50deg);}
-  100% {transform: rotate(35deg);}
+  100% {transform: rotate(40deg);}
+}
+@keyframes fishtail4{
+  0% {transform: rotate(60deg);}
+  100% {transform: rotate(45deg);}
 }
 @keyframes fishbubble {
   0% {transform: translate(0px,0px);}

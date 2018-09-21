@@ -35,7 +35,6 @@ class Fish extends Component {
   componentDidMount() {
     this.intervalfishbubble = setInterval(() => this.fishbubble(), 5000);
   }
-  
   componentWillUnmount() {
     clearInterval(this.intervalfishbubble);
 	}
@@ -73,14 +72,12 @@ class Fish extends Component {
         this.commanDone();
     }
   }
-  
   commanDone() {
     clearInterval(this.intervalMove);
     clearTimeout(this.intervalStop);
     this.setState({ newCommand: true });
     this.props.done();
   }
-  
 	movefish(x, y) {
   let fish = this.state.fish;
   //console.log(fish);
@@ -138,10 +135,21 @@ class Fish extends Component {
   
   fishbubble() {
     const fish = this.state.fish;
+    let x = fish.x;
+    let y = fish.y;
+    switch (fish.rotation) { 
+         case 0:
+        break;
+         case 0:
+        break;
+         case 0:
+        break;
+        default:
+    }
     this.setState({ 
        bubble: {
-          x: fish.x,
-          y: fish.y,
+          x: x,
+          y: y,
         },
      });
   }
@@ -217,10 +225,12 @@ class Fish extends Component {
                   animationFillMode: 'forwards',
                 }}
             >
-              <div className="goldfish-uptail"></div>
+              <div className="goldfish-uptail1"></div>
+              <div className="goldfish-uptail2"></div>
+              <div className="goldfish-downtail"></div>
               <div className="goldfish-fin"></div>
-              <div className="goldfish-fin goldfish-fin-bottom"></div>
               <div className="goldfish-body">
+                <div className="goldfish-gill"></div>
                 <div className="goldfish-eye">
                   <div className="goldfish-pupil"></div>
                 </div>

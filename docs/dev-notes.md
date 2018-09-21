@@ -63,6 +63,8 @@ key: is make by "C-" + @icon + @color
 
 
 ### fish
+now is a clow fish
+
 **prop**  
 @command: integer 0 to 9 (0-9 for now can be more)  
 @done: funtion to tell parent command done  
