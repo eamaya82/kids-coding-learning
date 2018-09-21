@@ -63,7 +63,7 @@ key: is make by "C-" + @icon + @color
 
 
 ### fish
-now is a clow fish
+now is a clowfish
 
 **prop**  
 @command: integer 0 to 9 (0-9 for now can be more)  

@@ -23,9 +23,9 @@ class Game extends Component {
 			cardDrop: [],
 			cardColor: 0,
       currentCard: null,
-			maxcardDrop: 1,
+			maxcardDrop: 2,
 			cardMach: 0,
-			nextMach: 2,
+			nextMach: 6,
       fishCommand: 0,
       fishSequence: [],
 		};
@@ -215,7 +215,7 @@ class Game extends Component {
 
 		return ( 
 			<div className='container-drag'>
-        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.75} />
+        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.5} />
         <div className='backmenu'
           onClick={() => this.goHomeScreen()}
         >

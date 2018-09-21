@@ -31,6 +31,7 @@
   right: 0;
   top: 0;
   background-color: DeepSkyBlue;
+  /*background-image: url(./bg.png);*/
   touch-action: none;
 }
 

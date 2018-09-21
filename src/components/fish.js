@@ -19,8 +19,8 @@ class Fish extends Component {
         rotation: 0,
       },
       bubble: {
-        x: 30,
-        y: 50,
+        x: 110,
+        y: 110,
       },
       gridborder: {
         up: 10,
@@ -33,7 +33,7 @@ class Fish extends Component {
 
   
   componentDidMount() {
-    this.intervalfishbubble = setInterval(() => this.fishbubble(), 5000);
+    this.intervalfishbubble = setInterval(() => this.fishbubble(), 3500);
   }
   componentWillUnmount() {
     clearInterval(this.intervalfishbubble);
@@ -134,24 +134,30 @@ class Fish extends Component {
   }
   
   fishbubble() {
+    clearInterval(this.intervalfishbubble);
     const fish = this.state.fish;
-    let x = fish.x;
-    let y = fish.y;
+    let bx = fish.x;
+    let by = fish.y;
     switch (fish.rotation) { 
-         case 0:
-        break;
-         case 0:
-        break;
-         case 0:
-        break;
-        default:
+      case 0:
+        bx = bx + 5;
+        by = by + 9;
+      break;
+      case 90:
+      break;
+      case 180:
+      break;
+      case 270:
+      break;
+      default:
     }
     this.setState({ 
        bubble: {
-          x: x,
-          y: y,
+          x: bx,
+          y: by,
         },
      });
+    this.intervalfishbubble = setInterval(() => this.fishbubble(), 8000);
   }
      
      
@@ -190,57 +196,59 @@ class Fish extends Component {
     return (
       <div className='sea'>
       
-      <div id="bubles">
-        <div className="bubble x1"></div>
-        <div className="bubble x2"></div>
-        <div className="bubble x3"></div>
-        <div className="bubble x4"></div>
-        <div className="bubble x5"></div>
-        <div className="bubble x6"></div>
-        <div className="bubble x7"></div>
-        <div className="bubble x8"></div>
-        <div className="bubble x9"></div>
-        <div className="bubble x10"></div>      
-      </div>  
-
-        <div className="goldfish xf"
-            style={{
-						  top: this.state.bubble.x + '%',
-						  left: this.state.bubble.y + '%',
-					  }}
-          ></div>
-      
-      <div style={{
-              position: 'absolute',
-              top: this.state.fish.x + '%',
-              left: this.state.fish.y + '%',
-            }}>
-        <div className='goldfishanimate1'>
-          <div className='goldfishanimate2'>
-        
-            <div className='goldfish'
-                style={{
-                  animation: `rotation${this.state.fish.rotation} linear 0.5s forwards`,
-                  animationIterationCount: '1',
-                  animationFillMode: 'forwards',
-                }}
-            >
-              <div className="goldfish-uptail1"></div>
-              <div className="goldfish-uptail2"></div>
-              <div className="goldfish-downtail"></div>
-              <div className="goldfish-fin"></div>
-              <div className="goldfish-body">
-                <div className="goldfish-gill"></div>
-                <div className="goldfish-eye">
-                  <div className="goldfish-pupil"></div>
-                </div>
-              <div className="goldfish-midtail"></div>
-              </div>
-            </div>
-
-          </div>  
+        <div id='bubles'>
+          <div className='bubble x1'></div>
+          <div className='bubble x2'></div>
+          <div className='bubble x3'></div>
+          <div className='bubble x4'></div>
+          <div className='bubble x5'></div>    
         </div>
-      </div>
+      
+        <div style={{
+                position: 'absolute',
+                top: this.state.fish.x + '%',
+                left: this.state.fish.y + '%',
+              }}>
+          <div className='clownfishanimate1'>
+            <div className='clownfishanimate2'>
+              <div className='clownfish'
+                  style={{
+                    animation: `rotation${this.state.fish.rotation} linear 0.5s forwards`,
+                    animationIterationCount: '1',
+                    animationFillMode: 'forwards',
+                  }}
+              >
+                <div className='clownfish-uptail1'></div>
+                <div className='clownfish-uptail2'></div>
+                <div className='clownfish-downtail'></div>
+                <div className='clownfish-fin'></div>
+                <div className='clownfish-body'>
+                  <div className='clownfish-gill'></div>
+                  <div className='clownfish-eye'>
+                    <div className='clownfish-pupil'></div>
+                  </div>
+                <div className='clownfish-midtail'></div>
+                </div>
+              </div>
+
+            </div>  
+          </div>
+        </div>
+
+        <div className='clownfish xf'
+              style={{
+                top: this.state.bubble.x + '%',
+                left: this.state.bubble.y + '%',
+              }}
+            ></div>
+
+        <div id='bubles'>
+          <div className='bubble x6'></div>
+          <div className='bubble x7'></div>
+          <div className='bubble x8'></div>
+          <div className='bubble x9'></div>
+          <div className='bubble x10'></div>      
+        </div>
       
       </div>
     );

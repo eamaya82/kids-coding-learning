@@ -58,6 +58,7 @@ Pending developments
   - [x] animation on new Card  
   - [x] animation on fish  
   - [x] bubbles [from here][bubbles4] (other demos [demo1][bubbles1] [demo2][bubbles2] [demo3][bubbles3])  
+    - [ ] need to tweak, big bubbles go fast and small slow
   - [ ] seaweed and other things in the fish tank  
   - [ ] change the fish for a frog, bug ,snake etc... can by part of the levels?  
   - [ ] backgrounds (for example aquarium for fish)  
