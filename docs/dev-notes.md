@@ -1,3 +1,16 @@
+# URL utilities  
+
+w3schools  
+- https://www.w3schools.com/css/css3_gradients.asp  
+- https://www.w3schools.com/colors/colors_hsl.asp  
+
+   
+- http://bennettfeely.com/clippy/  
+- http://cssanimate.com/  
+- http://www.patternify.com/  
+  
+
+
 # Components
 
 ## Game-mode1

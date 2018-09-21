@@ -22,21 +22,21 @@ class App extends Component {
   
   openFullscreen(){
     //for test on web mobile browser
-    let elem = document.documentElement;
+   /* let elem = document.documentElement;
     if (elem.requestFullscreen) {
       elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) { /* Firefox */
+    } else if (elem.mozRequestFullScreen) {
       elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    } else if (elem.webkitRequestFullscreen) {
       elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    } else if (elem.msRequestFullscreen) {
       elem.msRequestFullscreen();
-    }
+    }*/
   }
   
   closeFullscreen() {
     //for test on web mobile browser
-    if (document.exitFullscreen) {
+    /*if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
@@ -44,7 +44,7 @@ class App extends Component {
       document.webkitExitFullscreen();
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
-    }
+    }*/
   }
   
   loadgamemodes () {

@@ -5,11 +5,12 @@
   height: 100vh;
   right: 0;
   top: 0;
-  background-color: DeepSkyBlue;
-  background-image: linear-gradient(to bottom,  #00c9ff 60%, #08507d 100%);
+  background-color: hsl(186, 75%, 50%);
+  background-image: linear-gradient(to bottom, #00c9ff 0%, #92fe9d 100%), url(./fish-bg.jpg);
+  background-blend-mode: multiply;
+  background-size: cover;
   touch-action: none;
 }
-
 .fish {
   color: rgb(252, 149, 15);
   position: absolute;
@@ -17,209 +18,280 @@
   animation-iteration-count: infinite;
   touch-action: none;
 }
-
+/* gold fish */
+.goldfishanimate1{
+  position: absolute;
+  display: block;
+  touch-action: none;
+  animation: swing1 11s ease-in-out infinite alternate;
+}
+.goldfishanimate2{
+  position: absolute;
+  display: block;
+  touch-action: none;
+  animation: swing2 7s ease-in-out infinite alternate;
+}
+.goldfish {
+  display: block;
+  position: absolute;
+  width: 50px;
+  height: 33px;
+  touch-action: none;
+}
+.goldfish-body {
+  display: block;
+  position: relative;
+  margin-top: 10px;
+  margin-left: 13px;
+  background-color: rgb(252, 149, 15);
+  /*background: linear-gradient(to right, rgb(252, 149, 15) 50%, rgb(255, 201, 66) 100%), url(
+    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAARklEQVQoU2P8M5X/PwMDAwOziTGIYvh75iyYDaKRASNIITYJdDHG/yed/qPrhpmEbAtehShWE20i0W4kydco4QANKnQPAgBnpT8BcPCqpgAAAABJRU5ErkJggg==
+  ) repeat;
+  background-blend-mode: color;*/
+  border-radius: 50%;
+  width: 50px; 
+  height: 30px;
+  box-shadow: inset 10px 5px 5px -10px rgb(252, 149, 15),
+              inset 10px -5px 5px -10px rgb(252, 149, 15),
+              inset 0px 10px 18px -10px rgba(255,255,255,0.75),
+              inset 0px -10px 18px -10px rgba(0,0,0,0.75);
+  
+  animation: fisheat 4.1s ease-in-out infinite alternate;
+}
+.goldfish-eye {
+  position: absolute;
+  margin-left: 37px;
+  margin-top: 7px;
+  z-index: 1;
+  background-color: white;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
+.goldfish-pupil {
+  position: absolute;
+  z-index: 2;
+  margin-left: 2px;
+  margin-top: 2px;
+  background-color: black;
+  border-radius: 50%;
+  height: 3px;
+  width: 3px;
+  animation: fisheye 20s infinite;
+}
+.goldfish-uptail {
+  position: absolute;
+  margin-left: 21px;
+  margin-top: 17px;
+  background-color: rgb(252, 149, 15);
+  /*background:url(
+  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2O8V8XwnwENMP6Zyk9tQQD+1QzZ7Yl/ugAAAABJRU5ErkJggg==
+    ) repeat;*/
+  border-radius: 50%;
+  box-shadow: inset 0px 5px 5px -5px rgba(255,255,255,0.75);
+              
+  transform: rotate(40deg);
+  width: 26px;
+  height: 16px;
+  animation: fishtail3 7.7s infinite;
+  transform-origin: right;
+}
+.goldfish-midtail {
+  position: absolute;
+  margin-left: 17px;
+  margin-top: 13px;
+  background-color: rgb(252, 149, 15);
+  border-radius: 50%;
+  box-shadow: inset 0px 5px 5px -5px rgba(255,255,255,0.75);
+  /*transform: rotate(0deg);*/
+  width: 13px;
+  height: 8px;
+  animation: fishtail2 0.6s infinite;
+  transform-origin: right;
+}
+.goldfish-fin {
+  position: absolute;
+  /*background:url(
+  data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAFklEQVQYV2O8V8XwnwENMP6Zyk9tQQD+1QzZ7Yl/ugAAAABJRU5ErkJggg==
+    ) repeat;*/
+  margin-top: 18px; 
+  margin-left: 1px;
+  background-color: rgb(252, 149, 15);
+  /*background-image: linear-gradient(to right, rgb(235, 153, 46) 0%, rgb(187, 112, 15) 45%);*/
+  border-radius: 50%;
+  transform: rotate(40deg);
+  width: 26px;
+  height: 13px;
+  animation: fishtail1 1.8s infinite;
+}
+.goldfish-fin-bottom {
+  position: absolute;
+  margin-top: 22px; 
+  margin-left: 1px;
+  background-color: rgb(252, 149, 15);
+  /*background-image: linear-gradient(to right, rgb(235, 153, 46) 0%, rgb(187, 112, 15) 45%);*/
+  transform: rotate(-40deg);
+  animation: fishtail2 1.8s infinite;
+}
+/* bubbles */
 .bubble {
   width: 30px;
   height: 30px;
-  /*background: #ffb200;*/
-  /*border-radius: 200px;
-  -moz-border-radius: 200px;
-  -webkit-border-radius: 200px;*/
   position: absolute;
-  
-  -webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	border-radius: 50%;
-  -webkit-box-shadow: inset 0px 2px 6px 1px rgba(255, 255, 255, 1);
-	-moz-box-shadow: inset 0px 2px 6px 1px rgba(255, 255, 255, 1);
 	box-shadow: inset 0px 2px 6px 1px rgba(255, 255, 255, 1);
-	
-	
 }
 .bubble:after {
-  background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 70%);
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.5)), color-stop(70%,rgba(255,255,255,0)));
-  background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%);
-  background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%);
-  background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%);
   background: radial-gradient(ellipse at center,  rgba(255,255,255,0.5) 0%,rgba(255,255,255,0) 70%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#00ffffff',GradientType=1 );
-
-  -webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	border-radius: 50%;
-	
-  -webkit-box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.3);
-	-moz-box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.3);
 	box-shadow: inset 0 4px 6px rgba(255, 255, 255, 0.3);
-  
   content: "";
   height: 26px;
 	left: 2px;
 	position: absolute;
 	width: 26px;
 }
-
+.xf {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 60px;
+  top: 20px;
+  opacity: 0.4;
+  border-radius: 50%;
+  box-shadow: inset 0px 2px 6px 1px rgba(255, 255, 255, 1);
+  transform: scale(0.32);
+  animation: fishbubble 5s linear infinite forwards, fishbubblesideWays 4s ease-in-out infinite alternate;
+}
 .x1 {
   left: 35%;
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  transform: scale(0.9);
+  transform: scale(0.65);
   opacity: 0.2;
-  -webkit-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  -o-animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  animation: moveclouds 15s linear infinite, sideWays 4s ease-in-out infinite alternate;
 }
-
 .x2 {
-  left: 20%;/*200px;*/
-  -webkit-transform: scale(0.6);
-  -moz-transform: scale(0.6);
+  left: 20%;
   transform: scale(0.6);
   opacity: 0.5;
-  -webkit-animation: moveclouds 21s linear infinite, sideWays 5s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 21s linear infinite, sideWays 5s ease-in-out infinite alternate;
-  -o-animation: moveclouds 21s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  animation: moveclouds 21s linear infinite, sideWays 5s ease-in-out infinite alternate;
 }
-
 .x3 {
-  left: 40%;/*350px;*/
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
+  left: 40%;
   transform: scale(0.8);
   opacity: 0.3;
-  -webkit-animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
-  -o-animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  animation: moveclouds 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
 }
-
 .x4 {
-  left: 60%;/*470px;*/
-  -webkit-transform: scale(0.75);
-  -moz-transform: scale(0.75);
+  left: 60%;
   transform: scale(0.75);
   opacity: 0.35;
-  -webkit-animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -o-animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  animation: moveclouds 18s linear infinite, sideWays 2s ease-in-out infinite alternate;
 }
-
 .x5 {
-  left: 80%; /*150px;*/
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
+  left: 80%;
   transform: scale(0.8);
   opacity: 0.3;
-  -webkit-animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
-  -o-animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  animation: moveclouds 7s linear infinite, sideWays 1s ease-in-out infinite alternate;
 }
-
 .x6 {
   left: 65%;
-  -webkit-transform: scale(0.4);
-  -moz-transform: scale(0.4);
   transform: scale(0.4);
   opacity: 0.4;
-  -webkit-animation: moveclouds 10s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 10s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  -o-animation: moveclouds 10s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  animation: moveclouds 10s linear infinite, sideWays 3s ease-in-out infinite alternate;
 }
-
 .x7 {
-  left: 70%;/*200px;*/
-  -webkit-transform: scale(0.7);
-  -moz-transform: scale(0.7);
+  left: 70%;
   transform: scale(0.7);
   opacity: 0.5;
-  -webkit-animation: moveclouds 8s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 8s linear infinite, sideWays 3s ease-in-out infinite alternate;
-  -o-animation: moveclouds 8s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  animation: moveclouds 8s linear infinite, sideWays 3s ease-in-out infinite alternate;
 }
-
 .x8 {
-  left: 50%;/*350px;*/
-  -webkit-transform: scale(0.4);
-  -moz-transform: scale(0.4);
+  left: 50%;
   transform: scale(0.4);
   opacity: 0.45;
-  -webkit-animation: moveclouds 13s linear infinite, sideWays 5s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 13s linear infinite, sideWays 5s ease-in-out infinite alternate;
-  -o-animation: moveclouds 13s linear infinite, sideWays 5s ease-in-out infinite alternate;
+  animation: moveclouds 13s linear infinite, sideWays 5s ease-in-out infinite alternate;
 }
-
 .x9 {
-  left: 30%;/*470px;*/
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
+  left: 30%;
   transform: scale(0.8);
   opacity: 0.35;
-  -webkit-animation: moveclouds 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
-  -o-animation: moveclouds 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  animation: moveclouds 16s linear infinite, sideWays 2s ease-in-out infinite alternate;
 }
-
 .x10 {
-  left: 10%; /*150px;*/
-  -webkit-transform: scale(0.7);
-  -moz-transform: scale(0.7);
+  left: 10%;
   transform: scale(0.7);
   opacity: 0.4;
-  -webkit-animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
-  -moz-animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
-  -o-animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
+  animation: moveclouds 10s linear infinite, sideWays 1s ease-in-out infinite alternate;
+}
+/* animations */
+/* gold fish rotations */
+@keyframes rotation0 {
+  0% {}
+  100% {transform-origin: center;transform: rotate(0deg);}
+}
+@keyframes rotation90 {
+  0% {}
+  100% {transform-origin: center;transform: rotate(90deg);}
+}
+@keyframes rotation180 {
+  0% {}
+  100% {transform-origin: center;transform: scaleX(-1);}
+}
+@keyframes rotation270 {
+  0% {}
+  100% {transform-origin: center;transform: rotate(-90deg);}
+}
+/* gold fish */
+@keyframes swing1 {
+  0%  {transform: translate(0px,-9px);}
+  100% {transform: translate(0px,9px);}
+}
+@keyframes swing2 {
+  0%  {transform: rotate(-9deg);}
+  100% {transform: rotate(9deg);}
 }
 
-@keyframes swing {
-  0%  {transform: translate(0px,0px) rotate(0deg);}
-  5%  {transform: translate(1px,-1px) rotate(-2deg);}
-  10% {transform: translate(1px,-2px) rotate(-4deg);}
-  15% {transform: translate(2px,-3px) rotate(-6deg);}
-  20% {transform: translate(2px,-4px) rotate(-8deg);}
-  25% {transform: translate(3px,-5px) rotate(-10deg);}
-  30% {transform: translate(2px,-6px) rotate(-8deg);}
-  35% {transform: translate(2px,-7px) rotate(-6deg);}
-  40% {transform: translate(1px,-8px) rotate(-4deg);}
-  45% {transform: translate(1px,-9px) rotate(-2deg);}
-  50% {transform: translate(0px,-10px) rotate(0deg);}
-  54% {transform: translate(0px,-9px) rotate(2deg);}
-  60% {transform: translate(-1px,-8px) rotate(4deg);}
-  65% {transform: translate(-2px,-7px) rotate(6deg);}
-  70% {transform: translate(-2px,-6px) rotate(8deg);}
-  75% {transform: translate(-3px,-5px) rotate(10deg);}
-  80% {transform: translate(-2px,-4px) rotate(8deg);}
-  85% {transform: translate(-2px,-3px) rotate(6deg);}
-  90% {transform: translate(-1px,-2px) rotate(4deg);}
-  96% {transform: translate(-1px,-1px) rotate(2deg);}
-  100% {transform: translate(0px,0px) rotate(0deg);}
+@keyframes fisheat{
+  80% {clip-path: polygon(0 0, 100% 0, 100% 50%, 86% 51%, 100% 50%, 100% 100%, 0 100%);}
+  100% {clip-path: polygon(0 0, 100% 0, 100% 41%, 86% 51%, 100% 59%, 100% 100%, 0 100%);}
 }
-
-@-webkit-keyframes moveclouds {
-  0% {top: 500px;}
-  100% {top: -500px;}
+@keyframes fisheye{
+  0% {transform: translate(0px,0px);}
+  25% {transform: translate(-2px,0px);}
+  50% {transform: translate(0px,0px);}
+  76% {transform: translate(2px,0px);}
+  100% {transform: translate(0px,0px);}
 }
-
-@-webkit-keyframes sideWays {
+@keyframes fishtail1{
+  0% {transform: rotate(25deg);}
+  50% {transform: rotate(50deg);}
+  100% {transform: rotate(25deg);}
+}
+@keyframes fishtail2{
+  0% {transform: rotate(-25deg);}
+  50% {transform: rotate(-50deg);}
+  100% {transform: rotate(-25deg);}
+}
+@keyframes fishtail3{
+  0% {transform: rotate(35deg);}
+  50% {transform: rotate(50deg);}
+  100% {transform: rotate(35deg);}
+}
+@keyframes fishbubble {
+  0% {transform: translate(0px,0px);}
+  100% {transform: translate(0px,-600px);}
+}
+@keyframes fishbubblesideWays {
   0% {margin-left: 0px;}
-  100% {margin-left: 50px;}
+  100% {margin-left: 10px;}
 }
-
-@-moz-keyframes moveclouds {
+/* bubbles */
+@keyframes moveclouds {
   0% {top: 500px;}
   100% {top: -500px;}
 }
-
-@-moz-keyframes sideWays {
-  0% {margin-left: 0px;}
-  100% {margin-left: 50px;}
-}
-
-@-o-keyframes moveclouds {
-  0% {top: 500px;}
-  100% {top: -500px;}
-}
-
-@-o-keyframes sideWays {
+@keyframes sideWays {
   0% {margin-left: 0px;}
   100% {margin-left: 50px;}
 }

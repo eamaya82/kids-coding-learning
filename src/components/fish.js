@@ -7,7 +7,6 @@ import { faFish } from '@fortawesome/free-solid-svg-icons';
 import './fish.css';
 
 library.add(faFish);
-let intervalStop;
 class Fish extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +18,10 @@ class Fish extends Component {
         y: 50,
         rotation: 0,
       },
+      bubble: {
+        x: 30,
+        y: 50,
+      },
       gridborder: {
         up: 10,
         down: 70,
@@ -27,7 +30,15 @@ class Fish extends Component {
       },
     };
   }
+
   
+  componentDidMount() {
+    this.intervalfishbubble = setInterval(() => this.fishbubble(), 5000);
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.intervalfishbubble);
+	}
   componentWillReceiveProps(nextProps) {
     //the "this.state.newCommand" force to accept the same command several times consecutively, example 2, 2, 2
     if (this.props.command !== nextProps.command || this.state.newCommand) {
@@ -65,7 +76,7 @@ class Fish extends Component {
   
   commanDone() {
     clearInterval(this.intervalMove);
-    clearTimeout(intervalStop);
+    clearTimeout(this.intervalStop);
     this.setState({ newCommand: true });
     this.props.done();
   }
@@ -111,10 +122,10 @@ class Fish extends Component {
   }
 
   //stop the movement of the fish after X second
-  if (typeof intervalStop !== 'undefined') {
-    clearTimeout(intervalStop);
+  if (typeof this.intervalStop !== 'undefined') {
+    clearTimeout(this.intervalStop);
   }
-  intervalStop = setTimeout(() => this.commanDone(), 1000);
+  this.intervalStop = setTimeout(() => this.commanDone(), 1000);
 
   this.setState(prevState => ({
     fish: {
@@ -123,6 +134,16 @@ class Fish extends Component {
       rotation: fish.rotation,
     },
   }));
+  }
+  
+  fishbubble() {
+    const fish = this.state.fish;
+    this.setState({ 
+       bubble: {
+          x: fish.x,
+          y: fish.y,
+        },
+     });
   }
      
      
@@ -160,29 +181,57 @@ class Fish extends Component {
   
     return (
       <div className='sea'>
-      {grid}
-      <div id="bubles">
-        <div class="bubble x1"></div>
-        <div class="bubble x2"></div>
-        <div class="bubble x3"></div>
-        <div class="bubble x4"></div>
-        <div class="bubble x5"></div>
-        <div class="bubble x6"></div>
-        <div class="bubble x7"></div>
-        <div class="bubble x8"></div>
-        <div class="bubble x9"></div>
-        <div class="bubble x10"></div>      
-      </div>     
       
-      <div
-					className='fish'
-					style={{
-						top: this.state.fish.x + '%',
-						left: this.state.fish.y + '%',
-					}}
-				>
-					<FontAwesomeIcon icon={faFish} size='4x' rotation={this.state.fish.rotation} />
-				</div>
+      <div id="bubles">
+        <div className="bubble x1"></div>
+        <div className="bubble x2"></div>
+        <div className="bubble x3"></div>
+        <div className="bubble x4"></div>
+        <div className="bubble x5"></div>
+        <div className="bubble x6"></div>
+        <div className="bubble x7"></div>
+        <div className="bubble x8"></div>
+        <div className="bubble x9"></div>
+        <div className="bubble x10"></div>      
+      </div>  
+
+        <div className="goldfish xf"
+            style={{
+						  top: this.state.bubble.x + '%',
+						  left: this.state.bubble.y + '%',
+					  }}
+          ></div>
+      
+      <div style={{
+              position: 'absolute',
+              top: this.state.fish.x + '%',
+              left: this.state.fish.y + '%',
+            }}>
+        <div className='goldfishanimate1'>
+          <div className='goldfishanimate2'>
+        
+            <div className='goldfish'
+                style={{
+                  animation: `rotation${this.state.fish.rotation} linear 0.5s forwards`,
+                  animationIterationCount: '1',
+                  animationFillMode: 'forwards',
+                }}
+            >
+              <div className="goldfish-uptail"></div>
+              <div className="goldfish-fin"></div>
+              <div className="goldfish-fin goldfish-fin-bottom"></div>
+              <div className="goldfish-body">
+                <div className="goldfish-eye">
+                  <div className="goldfish-pupil"></div>
+                </div>
+              <div className="goldfish-midtail"></div>
+              </div>
+            </div>
+
+          </div>  
+        </div>
+      </div>
+      
       </div>
     );
   }  
