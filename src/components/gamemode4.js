@@ -183,8 +183,8 @@ class Game extends Component {
             id={drop.icon[0] + drop.color}
             className='card cardmenu'
             style={{
-              top: (Math.floor(index / 6) * 33 + 5) + '%',
-              left: `${ (index % 6) * 16 + 4}%`,
+              top: (Math.floor(index / 4) * 30 + 5) + '%',
+              left: `${ (index % 4) * 20 + 10}%`,
             }}
             onClick={(e) => this.flipCard(e,index)}
 
@@ -202,8 +202,8 @@ class Game extends Component {
       if (cardMach >= nextMach){
         maxcards = maxcards + 1;
         nextMach = nextMach + (maxcards * 2)
-        if (maxcards > 9 ){
-          maxcards = 9;
+        if (maxcards > 6 ){
+          maxcards = 6;
         }
         this.setState({ 
           maxcardDrop: maxcards,
@@ -221,7 +221,7 @@ class Game extends Component {
         >
 					<FontAwesomeIcon icon={faArrowLeft} size='2x' />
 				</div>
-				<div className='score'>
+				<div className='score'  style={{fontSize: '5em'}}>
 					{this.state.cardMach}
 				</div>
 				<div className='drophere'>
