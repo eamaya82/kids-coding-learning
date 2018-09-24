@@ -227,7 +227,11 @@ class Fish extends Component {
                   <div className='clownfish-eye'>
                     <div className='clownfish-pupil'></div>
                   </div>
-                <div className='clownfish-midtail'></div>
+                </div>
+                <div className='clownfish-midtailanimate'>
+                  <div className='clownfish-midtailanimate2'>
+                    <div className='clownfish-midtail'></div>
+                  </div>
                 </div>
               </div>
 
