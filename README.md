@@ -56,6 +56,7 @@ Pending developments
   - [x] fish [dev-notes](docs/dev-notes.md#fish)  
 - [ ] improvements (animation, details, sounds, texts etc)  
   - [x] animation on new Card  
+    - [ ] 3D card and efect https://codepen.io/desandro/pen/MGpMOV
   - [x] animation on fish  
   - [x] bubbles [from here][bubbles4] (other demos [demo1][bubbles1] [demo2][bubbles2] [demo3][bubbles3])  
     - [ ] need to tweak, big bubbles go fast and small slow

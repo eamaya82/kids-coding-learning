@@ -1,12 +1,12 @@
 import React, {	Component } from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+/*import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFish } from '@fortawesome/free-solid-svg-icons';
+import { faFish } from '@fortawesome/free-solid-svg-icons';*/
 //import '../App.css';
 import './fish.css';
 
-library.add(faFish);
+/*library.add(faFish);*/
 class Fish extends Component {
   constructor(props) {
     super(props);
@@ -162,37 +162,6 @@ class Fish extends Component {
      
      
    render() {
-     let grid = [];
-     let i;
-     for (i = 0; i< 10; i++) {
-		
-			grid.push(
-				<div key={'h'+i} style={{
-            position: 'absolute',
-            top: '0%',
-            left: (i*10) +'%',
-            width: '9.7%',
-            height: '99.7%',
-            border: '1px dotted rgba(0,0,0,0.1)',
-          }}
-        >
-				</div>
-			);
-       grid.push(
-          <div key={'w'+i} style={{
-              position: 'absolute',
-              top: (i*10) +'%',
-              left: '0%',
-              width: '99.7%',
-              height: '9.7%',
-              border: '1px dotted rgba(0,0,0,0.1)',
-            }}
-          >
-          </div>
-        );
-     
-		};
-  
     return (
       <div className='sea'>
       
@@ -206,13 +175,14 @@ class Fish extends Component {
       
         <div style={{
                 position: 'absolute',
-                top: this.state.fish.x + '%',
-                left: this.state.fish.y + '%',
+                transition: 'transform .2s ease-in-out',
+                transform: 'translate3d(' + this.state.fish.y + 'vw, ' + this.state.fish.x + 'vh, 0px)',
               }}>
           <div className='clownfishanimate1'>
             <div className='clownfishanimate2'>
               <div className='clownfish'
                   style={{
+                    transition: 'transform .1s ease-in-out',
                     animation: `rotation${this.state.fish.rotation} linear 0.5s forwards`,
                     animationIterationCount: '1',
                     animationFillMode: 'forwards',

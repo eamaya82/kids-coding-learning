@@ -145,6 +145,12 @@ class Game extends Component {
 					Card = Card.parentNode;
 					if (Card.id !== DrawId) {
 						Card = Card.parentNode;
+            if (Card.id !== DrawId) {
+						  Card = Card.parentNode;
+              if (Card.id !== DrawId) {
+					    	Card = Card.parentNode;
+					    }
+					  }
 					}
 				}
 			}
