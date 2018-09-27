@@ -95,7 +95,7 @@ class Game extends Component {
          
           onClick={() => this.commandfish(drop.command)}
         >
-					<Card icon={drop.icon} color={drop.color} size={3} />
+					<Card icon={drop.icon} color={drop.color} size={4} />
 				</div>
 			);
 		});

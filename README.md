@@ -2,6 +2,8 @@ An attempt to approach programming for children (babies under 5 years old) throu
 if he can do a drag and drop, he could program without knowing ...  
 you just have to guide him through something that entertains him and what better than a game.  
 
+develop test here: https://eamaya82.github.io/kids-coding-learning/
+
 ## Need help?
 
 If you need help using this app, we encourage you to:  

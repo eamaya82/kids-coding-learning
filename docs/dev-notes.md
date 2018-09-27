@@ -6,8 +6,10 @@ w3schools
 
    
 - http://bennettfeely.com/clippy/  
+- http://jxnblk.com/paths/  
 - http://cssanimate.com/  
 - http://www.patternify.com/  
+- https://svg2jsx.herokuapp.com/  
   
 
 

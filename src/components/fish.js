@@ -6,6 +6,8 @@ import { faFish } from '@fortawesome/free-solid-svg-icons';*/
 //import '../App.css';
 import './fish.css';
 
+/* import seaweed1 from './seaweed1.svg'; */
+
 /*library.add(faFish);*/
 class Fish extends Component {
   constructor(props) {
@@ -17,16 +19,19 @@ class Fish extends Component {
         x: 30,
         y: 50,
         rotation: 0,
+        rotation1: 0,
+        isFaceToLeft: true,
+        isFaceToLeft1: true,
       },
       bubble: {
         x: 110,
         y: 110,
       },
       gridborder: {
-        up: 10,
+        up: 3,
         down: 70,
-        left: 10,
-        right: 80,
+        left: 6,
+        right: 79,
       },
     };
   }
@@ -80,6 +85,8 @@ class Fish extends Component {
   }
 	movefish(x, y) {
   let fish = this.state.fish;
+  let rotationold = fish.rotation;
+  let isFaceToLeftold = fish.isFaceToLeft;
   //console.log(fish);
   if (x === -1 && y === 0) {
     fish.rotation = 270;
@@ -89,9 +96,16 @@ class Fish extends Component {
   }
   if (x === 0 && y === -1) {
     fish.rotation = 180;
+    fish.isFaceToLeft = false;
   }
   if (x === 0 && y === 1) {
     fish.rotation = 0;
+    fish.isFaceToLeft = true;
+  }
+
+  if (rotationold !== fish.rotation) {
+    fish.rotation1 = rotationold;
+    fish.isFaceToLeft1 = isFaceToLeftold;
   }
 
   x = x * this.state.speed;
@@ -129,6 +143,9 @@ class Fish extends Component {
       x: prevState.fish.x + x,
       y: prevState.fish.y + y,
       rotation: fish.rotation,
+      rotation1: fish.rotation1,
+      isFaceToLeft: fish.isFaceToLeft,
+      isFaceToLeft1: fish.isFaceToLeft1,
     },
   }));
   }
@@ -141,11 +158,13 @@ class Fish extends Component {
     switch (fish.rotation) { 
       case 0:
         bx = bx + 5;
-        by = by + 9;
+        by = by + 15;
       break;
       case 90:
       break;
       case 180:
+        bx = bx + 5;
+        by = by - 5;
       break;
       case 270:
       break;
@@ -164,6 +183,47 @@ class Fish extends Component {
    render() {
     return (
       <div className='sea'>
+
+        <div className="seaweed4">
+          <svg viewBox='0 0 64 64' width='200' height='200'>  
+             <linearGradient id="gradient-horizontal" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-stop-1)" />
+              <stop offset="50%" stop-color="var(--color-stop-2)" />
+              <stop offset="100%" stop-color="var(--color-stop-3)" />
+            </linearGradient>
+            <path id='seaweed4' d='M32 64 C28 34 36 28 22 6 C40 26 26 36 31 64 Z' />
+          </svg>
+        </div>
+        <div className="seaweed3">
+          <svg viewBox='0 0 64 64' width='200' height='200'>  
+             <linearGradient id="gradient-horizontal" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-stop-1)" />
+              <stop offset="50%" stop-color="var(--color-stop-2)" />
+              <stop offset="100%" stop-color="var(--color-stop-3)" />
+            </linearGradient>
+            <path id='seaweed3' d='M32 64 C38 46 24 40 32 0 C20 20 40 32 31 64 Z' />
+          </svg>
+        </div>
+        <div className="seaweed2">
+          <svg viewBox='0 0 64 64' width='200' height='200'>  
+             <linearGradient id="gradient-horizontal" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-stop-1)" />
+              <stop offset="50%" stop-color="var(--color-stop-2)" />
+              <stop offset="100%" stop-color="var(--color-stop-3)" />
+            </linearGradient>
+            <path id='seaweed2' d='M32 64 C32 46 20 22 40 6 C30 16 26 36 31 64 Z' />
+          </svg>
+        </div>
+        <div className="seaweed1">
+          <svg viewBox='0 0 64 64' width='200' height='200'>  
+             <linearGradient id="gradient-horizontal" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-stop-1)" />
+              <stop offset="50%" stop-color="var(--color-stop-2)" />
+              <stop offset="100%" stop-color="var(--color-stop-3)" />
+            </linearGradient>
+            <path id='seaweed1' d='M32 64 C26 22 42 28 32 0 C38 48 26 48 31 64 Z' />
+          </svg>
+        </div>
       
         <div id='bubles'>
           <div className='bubble x1'></div>
@@ -173,37 +233,51 @@ class Fish extends Component {
           <div className='bubble x5'></div>    
         </div>
       
-        <div style={{
+        <div className='clownfish' style={{
                 position: 'absolute',
                 transition: 'transform .2s ease-in-out',
                 transform: 'translate3d(' + this.state.fish.y + 'vw, ' + this.state.fish.x + 'vh, 0px)',
               }}>
           <div className='clownfishanimate1'>
             <div className='clownfishanimate2'>
-              <div className='clownfish'
-                  style={{
-                    transition: 'transform .1s ease-in-out',
-                    animation: `rotation${this.state.fish.rotation} linear 0.5s forwards`,
-                    animationIterationCount: '1',
-                    animationFillMode: 'forwards',
-                  }}
-              >
-                <div className='clownfish-uptail1'></div>
-                <div className='clownfish-uptail2'></div>
-                <div className='clownfish-downtail'></div>
-                <div className='clownfish-fin'></div>
-                <div className='clownfish-body'>
-                  <div className='clownfish-gill'></div>
-                  <div className='clownfish-eye'>
-                    <div className='clownfish-pupil'></div>
+              <div className='clownfish' style={{
+                      transition: 'transform .2s ease-in-out',
+                      transformOrigin: 'center',
+                      transformStyle: 'preserve-3d',
+                      perspective: '1000px',
+                      animation: `rotation${this.state.fish.rotation}-${this.state.fish.rotation1}${this.state.fish.isFaceToLeft ? '-toleft': '-toright'}${this.state.fish.isFaceToLeft1 ? '-fromleft': '-fromright'}  ease-in-out 0.7s forwards`,
+                      animationIterationCount: '1',
+                      animationFillMode: 'forwards',
+                    }} >
+                  <div className='clownfish-body body2'>
+                    <div className='clownfish-gill'></div>
+                    <div className='clownfish-eye'>
+                      <div className='clownfish-pupil'></div>
+                    </div>
+                  </div>
+                  <div className='clownfish-uptail1'></div>
+                  <div className='clownfish-uptail2'></div>
+                  <div className='clownfish-downtail'></div>
+                  <div className='clownfish-fin'></div>
+                  <div className='clownfish-body'>
+                    <div className='clownfish-gill'></div>
+                    <div className='clownfish-eye'>
+                      <div className='clownfish-pupil'></div>
+                    </div>
+                  </div>
+                  <div className='clownfish-3ddepth'>
+                    <div className='clownfish-3ddepth4'></div>
+                    <div className='clownfish-3ddepth3'></div>
+                    <div className='clownfish-3ddepth2'></div>
+                    <div className='clownfish-3ddepth1'></div>
+                  </div>
+
+                  <div className='clownfish-midtailanimate'>
+                    <div className='clownfish-midtailanimate2'>
+                      <div className='clownfish-midtail'></div>
+                    </div>
                   </div>
                 </div>
-                <div className='clownfish-midtailanimate'>
-                  <div className='clownfish-midtailanimate2'>
-                    <div className='clownfish-midtail'></div>
-                  </div>
-                </div>
-              </div>
 
             </div>  
           </div>
