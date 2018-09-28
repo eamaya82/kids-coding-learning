@@ -1,17 +1,20 @@
-# URL utilities  
+# Online Utilities  
 
-w3schools  
-- https://www.w3schools.com/css/css3_gradients.asp  
-- https://www.w3schools.com/colors/colors_hsl.asp  
 
-   
 - http://bennettfeely.com/clippy/  
-- http://jxnblk.com/paths/  
 - http://cssanimate.com/  
 - http://www.patternify.com/  
-- https://svg2jsx.herokuapp.com/  
   
-
+- https://www.w3schools.com/css/css3_gradients.asp  
+- https://www.w3schools.com/colors/colors_hsl.asp  
+  
+svg  
+- http://jxnblk.com/paths/  
+- https://svg2jsx.herokuapp.com/  
+- https://editor.method.ac/  
+   
+- https://jsfiddle.net/w8r/yx0y1jLc/  
+- https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform  
 
 # Components
 

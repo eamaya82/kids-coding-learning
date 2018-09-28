@@ -15,6 +15,8 @@ class Fish extends Component {
     this.state = {
       speed: this.props.speed,
       newCommand: true,
+      commandLength: 20,
+      commandCount: 0,
       fish: {
         x: 30,
         y: 50,
@@ -24,14 +26,14 @@ class Fish extends Component {
         isFaceToLeft1: true,
       },
       bubble: {
-        x: 110,
-        y: 110,
+        x: -10,
+        y: -10,
       },
       gridborder: {
-        up: 3,
+        up: 10,
         down: 70,
-        left: 6,
-        right: 79,
+        left: 10,
+        right: 80,
       },
     };
   }
@@ -46,7 +48,10 @@ class Fish extends Component {
   componentWillReceiveProps(nextProps) {
     //the "this.state.newCommand" force to accept the same command several times consecutively, example 2, 2, 2
     if (this.props.command !== nextProps.command || this.state.newCommand) {
-      this.setState({ newCommand: false });
+      this.setState({ 
+            newCommand: false,
+            commandCount: this.state.commandLength,
+            });
       this.commandfish(nextProps.command);
     }
   }
@@ -128,7 +133,7 @@ class Fish extends Component {
     fish.y = this.state.gridborder.right;
   }
 
-  if (x === 0 && y === 0) {
+  if ((x === 0 && y === 0) || this.state.commandCount <= 0) {
     this.commanDone();
   }
 
@@ -139,17 +144,17 @@ class Fish extends Component {
   this.intervalStop = setTimeout(() => this.commanDone(), 1000);
 
   this.setState(prevState => ({
-    fish: {
-      x: prevState.fish.x + x,
-      y: prevState.fish.y + y,
-      rotation: fish.rotation,
-      rotation1: fish.rotation1,
-      isFaceToLeft: fish.isFaceToLeft,
-      isFaceToLeft1: fish.isFaceToLeft1,
-    },
-  }));
+      commandCount: prevState.commandCount - prevState.speed,
+      fish: {
+        x: prevState.fish.x + x,
+        y: prevState.fish.y + y,
+        rotation: fish.rotation,
+        rotation1: fish.rotation1,
+        isFaceToLeft: fish.isFaceToLeft,
+        isFaceToLeft1: fish.isFaceToLeft1,
+      },
+    }));
   }
-  
   fishbubble() {
     clearInterval(this.intervalfishbubble);
     const fish = this.state.fish;
@@ -181,9 +186,29 @@ class Fish extends Component {
      
      
    render() {
+     
+     const styleClowFishPosition = {
+                position: 'absolute',
+                transition: 'transform .2s ease-in-out',
+                transform: 'translate3d(' + this.state.fish.y + 'vw, ' + this.state.fish.x + 'vh, 0px)',
+              };
+     const styleClowFishRotation = {
+                transition: 'transform .2s ease-in-out',
+                transformOrigin: 'center',
+                transformStyle: 'preserve-3d',
+                perspective: '1000px',
+                animation: `rotation${this.state.fish.rotation}-${this.state.fish.rotation1}${this.state.fish.isFaceToLeft ? '-toleft': '-toright'}${this.state.fish.isFaceToLeft1 ? '-fromleft': '-fromright'}  ease-in-out 0.7s forwards`,
+                animationIterationCount: '1',
+                animationFillMode: 'forwards',
+            };
+     const styleClowFishBubble = {
+                top: this.state.bubble.x + 'vh',
+                left: this.state.bubble.y + 'vw',
+            };
+
     return (
       <div className='sea'>
-
+      
         <div className="seaweed4">
           <svg viewBox='0 0 64 64' width='200' height='200'>  
              <linearGradient id="gradient-horizontal" x2="0" y2="1">
@@ -233,28 +258,11 @@ class Fish extends Component {
           <div className='bubble x5'></div>    
         </div>
       
-        <div className='clownfish' style={{
-                position: 'absolute',
-                transition: 'transform .2s ease-in-out',
-                transform: 'translate3d(' + this.state.fish.y + 'vw, ' + this.state.fish.x + 'vh, 0px)',
-              }}>
+        <div className='clownfish' style={styleClowFishPosition} >
           <div className='clownfishanimate1'>
             <div className='clownfishanimate2'>
-              <div className='clownfish' style={{
-                      transition: 'transform .2s ease-in-out',
-                      transformOrigin: 'center',
-                      transformStyle: 'preserve-3d',
-                      perspective: '1000px',
-                      animation: `rotation${this.state.fish.rotation}-${this.state.fish.rotation1}${this.state.fish.isFaceToLeft ? '-toleft': '-toright'}${this.state.fish.isFaceToLeft1 ? '-fromleft': '-fromright'}  ease-in-out 0.7s forwards`,
-                      animationIterationCount: '1',
-                      animationFillMode: 'forwards',
-                    }} >
-                  <div className='clownfish-body body2'>
-                    <div className='clownfish-gill'></div>
-                    <div className='clownfish-eye'>
-                      <div className='clownfish-pupil'></div>
-                    </div>
-                  </div>
+              <div className='clownfish' style={styleClowFishRotation} >
+                 
                   <div className='clownfish-uptail1'></div>
                   <div className='clownfish-uptail2'></div>
                   <div className='clownfish-downtail'></div>
@@ -265,12 +273,6 @@ class Fish extends Component {
                       <div className='clownfish-pupil'></div>
                     </div>
                   </div>
-                  <div className='clownfish-3ddepth'>
-                    <div className='clownfish-3ddepth4'></div>
-                    <div className='clownfish-3ddepth3'></div>
-                    <div className='clownfish-3ddepth2'></div>
-                    <div className='clownfish-3ddepth1'></div>
-                  </div>
 
                   <div className='clownfish-midtailanimate'>
                     <div className='clownfish-midtailanimate2'>
@@ -278,17 +280,11 @@ class Fish extends Component {
                     </div>
                   </div>
                 </div>
-
             </div>  
           </div>
         </div>
 
-        <div className='clownfish xf'
-              style={{
-                top: this.state.bubble.x + '%',
-                left: this.state.bubble.y + '%',
-              }}
-            ></div>
+        <div className='clownfish xf' style={styleClowFishBubble} ></div>
 
         <div id='bubles'>
           <div className='bubble x6'></div>
