@@ -25,7 +25,7 @@ Any idea or improvement is well received
 - [ ] Game mode 3: Programin, choose the order of the commands to reach the objective
 - [x] Game mode 4: Seeks, look for the equal card  
 - [ ] Game mode 5: Harvest, move the fish (with mouse or touch) to pickup stuff  
-- [ ] Game mode 6: Beat box, pres to play sounds  
+- [x] Game mode 6: Beat box, pres to play sounds  
 - [ ] Game mode * : Augmented Reality [Kids to learn Alphabets with fun][ar1]
 - [ ] animals and backgrounds (fish, frog, snake, etc)
 - [ ] levels

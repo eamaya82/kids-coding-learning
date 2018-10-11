@@ -248,7 +248,88 @@ class App extends Component {
         ]
       },
 
-      { name: "Beatbox", icon: "volume-up", group: 2, mode: 6, data: [] }
+      {
+        name: "Beatbox",
+        icon: "volume-up",
+        group: 2,
+        mode: 6,
+        data: [
+          <svg width="90" height="70" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              rx="4"
+              stroke="#7f0000"
+              id="svg_3"
+              height="26"
+              width="26"
+              y="4"
+              x="4"
+              stroke-width="1.5"
+              fill="red"
+            />
+            <path
+              stroke="null"
+              id="svg_2"
+              d="m10.74458,12.2453l0,8.70262l4.95419,0l7.4164,6.09051l0.00441,-20.88364l-7.4175,6.09051l-4.95749,0z"
+              stroke-width="1.5"
+              fill="#ffaaaa"
+            />
+            <rect
+              rx="4"
+              stroke="#00007f"
+              id="svg_4"
+              height="26"
+              width="26"
+              y="4"
+              x="56.73383"
+              stroke-width="1.5"
+              fill="#0000ff"
+            />
+            <path
+              stroke="null"
+              id="svg_5"
+              d="m63.04091,12.2453l0,8.70262l4.95418,0l7.41641,6.09051l0.0044,-20.88364l-7.4175,6.09051l-4.95749,0z"
+              stroke-width="1.5"
+              fill="#aaaaff"
+            />
+            <rect
+              rx="4"
+              stroke="#007f00"
+              id="svg_6"
+              height="26"
+              width="26"
+              y="38.02941"
+              x="4.4375"
+              stroke-width="1.5"
+              fill="#00bf00"
+            />
+            <path
+              stroke="null"
+              id="svg_7"
+              d="m10.74458,46.52471l0,8.70262l4.95418,0l7.41641,6.09051l0.0044,-20.88364l-7.4175,6.09051l-4.95749,0z"
+              stroke-width="1.5"
+              fill="#aaffaa"
+            />
+            <rect
+              rx="4"
+              stroke="#7f007f"
+              id="svg_8"
+              height="26"
+              width="26"
+              y="38.02941"
+              x="56.73383"
+              stroke-width="1.5"
+              fill="#7f00ff"
+            />
+            <path
+              stroke="null"
+              id="svg_9"
+              d="m63.04091,46.52471l0,8.70262l4.95418,0l7.41641,6.09051l0.0044,-20.88364l-7.4175,6.09051l-4.95749,0z"
+              stroke-width="1.5"
+              fill="#d4aaff"
+            />
+          </svg>
+        ]
+      }
 
       /* clone dummy 
         {name: 'Shapes', icon: 'shapes', group: 4, data: [], mode: 1},
@@ -271,7 +352,7 @@ class App extends Component {
           key={mode.name}
           style={{
             top: `${Math.floor(index / 4) * 33 + 5}%`,
-            left: `${(index % 4) * 20 + 15}%`,
+            left: `${(index % 4) * 22 + 8}%`,
             color: `hsl(${mode.group * 30}, 75%, 50%)`,
             backgroundColor: `hsl(${mode.group * 30}, 100%, 90%)`,
             border: `5px solid hsl(${mode.group * 30}, 100%, 25%)`
