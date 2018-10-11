@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line
 import allicons from './importallicons'; //load all FontAwesomeIcon
 
 import '../App.css';

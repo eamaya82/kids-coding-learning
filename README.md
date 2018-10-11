@@ -25,12 +25,25 @@ Any idea or improvement is well received
 - [ ] Game mode 3: Programin, choose the order of the commands to reach the objective
 - [x] Game mode 4: Seeks, look for the equal card  
 - [ ] Game mode 5: Harvest, move the fish (with mouse or touch) to pickup stuff  
+- [ ] Game mode 6: Beat box, pres to play sounds  
+- [ ] Game mode * : Augmented Reality [Kids to learn Alphabets with fun][ar1]
 - [ ] animals and backgrounds (fish, frog, snake, etc)
 - [ ] levels
 - [ ] Config / setings
 - [ ] Sounds and Text (englis and spanish)
 - [ ] React Native
- 
+
+### Augmented Reality + Programin ?
+it would be possible to combine augmented reality with programming, "cards / cards" would be created with the basic commands, and using the camera read the script and generate the sequence of instructions in the game.  
+
+I would like first
+1 - finish the games.
+2 - add the sounds.
+3 - create the app for android
+
+and then if you include augmented reality
+
+
 ## To-do list
 Pending developments  
 
@@ -51,6 +64,7 @@ Pending developments
   - [ ] Game mode 3 programming: choose the cards in an order, then the fish will perform actions in that order, the idea is that they have obstacles and objectives.  
   - [x] Game mode 4 Seeks, look/flip the 2 same cards  
   - [ ] Game mode 5 move the fish to collect  
+  - [ ] Game mode 6 Beat box [see][beatbox1]
 - [ ] split in components  
 	- [x] Card component [dev-notes](docs/dev-notes.md#cards)  
 	- [x] Game logic
@@ -79,8 +93,11 @@ Pending developments
 
 To Clean  
 - [ ] cardOffset in Game component  
+ 
+ 
 
-
+[ar1]: https://github.com/prashant-andani/AR-Alphabets
+[beatbox1]: https://codepen.io/KatrinaHigh/pen/KebKKV
 [bubbles1]: https://codepen.io/matchboxhero/pen/LzdgOv?editors=1100
 [bubbles2]: https://www.html5canvastutorials.com/advanced/html5-canvas-animated-bubbles/
 [bubbles3]: https://codepen.io/Mark_Bowley/pen/mEtqj
