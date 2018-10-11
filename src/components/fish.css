@@ -6,7 +6,7 @@
   right: 0;
   top: 0;
   background-color: hsl(186, 75%, 50%);
-  background-image: url(./fish-bg2.jpg); /*linear-gradient(to bottom, #00c9ff 0%, #92fe9d 100%),*/
+  background-image: url(https://rawcdn.githack.com/eamaya82/kids-coding-learning/909d23ade38df201a7eaa296cc64ac18b5d9a7cc/src/components/fish-bg2.jpg); /*url(./fish-bg2.jpg);*/
   /*background-blend-mode: multiply;*/
   background-size: cover;
   touch-action: none;
