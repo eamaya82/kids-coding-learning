@@ -1,5 +1,5 @@
 {
-  "name": "dnd",
+  "name": "kids-conding-learning",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,5 +15,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "keywords": [
+    "drag-and-drop",
+    "nodejs",
+    "kids-coding",
+    "reactjs",
+    "fontawesome"
+  ],
+  "description": "An attempt to approach programming for children (babies under 5 years old) through games"
 }
