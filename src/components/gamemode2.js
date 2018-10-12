@@ -95,14 +95,14 @@ class Game extends Component {
          
           onClick={() => this.commandfish(drop.command)}
         >
-					<Card icon={drop.icon} color={drop.color} size={3} />
+					<Card icon={drop.icon} color={drop.color} size={4} />
 				</div>
 			);
 		});
 
 		return ( 
 			<div className='container-drag'>
-        <Fish command={this.state.fishCommand} done={this.commanddone} speed={1} />
+        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.5} />
         <div className='backmenu'
           onClick={() => this.goHomeScreen()}
         >

@@ -23,9 +23,9 @@ class Game extends Component {
 			cardDrop: [],
 			cardColor: 0,
       currentCard: null,
-			maxcardDrop: 1,
+			maxcardDrop: 2,
 			cardMach: 0,
-			nextMach: 2,
+			nextMach: 6,
       fishCommand: 0,
       fishSequence: [],
 		};
@@ -183,8 +183,8 @@ class Game extends Component {
             id={drop.icon[0] + drop.color}
             className='card cardmenu'
             style={{
-              top: (Math.floor(index / 6) * 33 + 5) + '%',
-              left: `${ (index % 6) * 16 + 4}%`,
+              top: (Math.floor(index / 4) * 30 + 5) + '%',
+              left: `${ (index % 4) * 20 + 10}%`,
             }}
             onClick={(e) => this.flipCard(e,index)}
 
@@ -202,8 +202,8 @@ class Game extends Component {
       if (cardMach >= nextMach){
         maxcards = maxcards + 1;
         nextMach = nextMach + (maxcards * 2)
-        if (maxcards > 9 ){
-          maxcards = 9;
+        if (maxcards > 6 ){
+          maxcards = 6;
         }
         this.setState({ 
           maxcardDrop: maxcards,
@@ -215,13 +215,13 @@ class Game extends Component {
 
 		return ( 
 			<div className='container-drag'>
-        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.75} />
+        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.5} />
         <div className='backmenu'
           onClick={() => this.goHomeScreen()}
         >
 					<FontAwesomeIcon icon={faArrowLeft} size='2x' />
 				</div>
-				<div className='score'>
+				<div className='score'  style={{fontSize: '5em'}}>
 					{this.state.cardMach}
 				</div>
 				<div className='drophere'>
