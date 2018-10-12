@@ -147,7 +147,9 @@ class Game extends Component {
           }}
           onClick={e => this.playsound(e, drop.id)}
         >
-          <audio id={'audio-' + drop.id} type="audio/wav" src={drop.src} />
+          <audio id={'audio-' + drop.id}>
+            <source type="audio/wav" src={drop.src} />
+          </audio>
           <Card icon={[drop.icon]} color={drop.color} size={3} />
         </div>
       );
