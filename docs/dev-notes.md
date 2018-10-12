@@ -1,3 +1,35 @@
+# Online Utilities  
+
+
+- http://bennettfeely.com/clippy/  
+- http://cssanimate.com/  
+- http://www.patternify.com/  
+  
+- https://www.w3schools.com/css/css3_gradients.asp  
+- https://www.w3schools.com/colors/colors_hsl.asp  
+  
+svg  
+- http://jxnblk.com/paths/  
+- https://svg2jsx.herokuapp.com/  
+- https://editor.method.ac/  
+   
+- https://jsfiddle.net/w8r/yx0y1jLc/  
+- https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform  
+
+other webs/links  
+memory game - https://github.com/sromku/memory-game  
+robbie-the-robot - https://github.com/MatthiasKainer/robbie-the-robot - https://robbie-the-robot.herokuapp.com
+
+
+# Augmented Reality on Web (Web AR)
+for Kids to learn Alphabets with fun. - https://github.com/prashant-andani/AR-Alphabets  
+AR.js Efficient Augmented Reality for the Web - https://aframe.io/blog/arjs/ - https://medium.com/arjs  
+Augmented Reality in 10 Lines of HTML - https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf  
+Area Learning with Multi-Markers in AR - https://medium.com/arjs/area-learning-with-multi-markers-in-ar-js-1ff03a2f9fbe  
+https://github.com/nitin42/React-Web-AR  
+
+
+
 # Components
 
 ## Game-mode1
@@ -50,6 +82,8 @@ key: is make by "C-" + @icon + @color
 
 
 ### fish
+now is a clowfish
+
 **prop**  
 @command: integer 0 to 9 (0-9 for now can be more)  
 @done: funtion to tell parent command done  

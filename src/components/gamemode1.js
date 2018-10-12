@@ -145,6 +145,12 @@ class Game extends Component {
 					Card = Card.parentNode;
 					if (Card.id !== DrawId) {
 						Card = Card.parentNode;
+            if (Card.id !== DrawId) {
+						  Card = Card.parentNode;
+              if (Card.id !== DrawId) {
+					    	Card = Card.parentNode;
+					    }
+					  }
 					}
 				}
 			}
@@ -292,7 +298,7 @@ class Game extends Component {
 
 		return ( 
 			<div className='container-drag'>
-        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.75} />
+        <Fish command={this.state.fishCommand} done={this.commanddone} speed={0.5} />
         <div className='backmenu'
           onClick={() => this.goHomeScreen()}
         >
